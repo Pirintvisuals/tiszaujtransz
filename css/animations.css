@@ -1,0 +1,247 @@
+/* ============================================================
+   animations.css — Keyframes, scroll-reveal, hero entrance,
+                    stagger delays, card & button hover
+   ============================================================ */
+
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(.93); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(8px); }
+}
+
+@keyframes pulseRing {
+  0%   { transform: scale(.9);  opacity: .6; }
+  70%  { transform: scale(1.2); opacity: 0; }
+  100% { transform: scale(.9);  opacity: 0; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes particleDrift {
+  0%   { transform: translateY(0)      translateX(0);    opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-60vh)  translateX(30px); opacity: 0; }
+}
+
+
+/* ============================================================
+   HERO ENTRANCE — staggered on page load
+   Classes applied directly in HTML markup
+   ============================================================ */
+
+.hero-anim-eyebrow {
+  opacity: 0;
+  animation: fadeUp .7s ease forwards .2s;
+}
+
+.hero-anim-title {
+  opacity: 0;
+  animation: fadeUp .8s cubic-bezier(.22,.61,.36,1) forwards .45s;
+}
+
+.hero-anim-subtitle {
+  opacity: 0;
+  animation: fadeUp .7s ease forwards .7s;
+}
+
+/* CTA buttons row */
+.hero-anim-cta {
+  opacity: 0;
+  animation: fadeUp .7s ease forwards .92s;
+}
+
+/* Breadcrumb / scroll indicator */
+.hero-anim-scroll {
+  opacity: 0;
+  animation: fadeIn .6s ease forwards 1.4s;
+}
+
+
+/* ============================================================
+   SCROLL REVEAL — Intersection Observer adds .visible
+   Primary: .fade-up  |  Alias: .reveal
+   ============================================================ */
+
+.fade-up,
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity   .65s cubic-bezier(.22,.61,.36,1),
+    transform .65s cubic-bezier(.22,.61,.36,1);
+}
+
+/* Directional variants */
+.reveal.reveal--left,
+.fade-up.fade-left  { transform: translateX(-30px); }
+
+.reveal.reveal--right,
+.fade-up.fade-right { transform: translateX(30px); }
+
+.reveal.reveal--scale,
+.fade-up.fade-scale { transform: scale(.95); transform-origin: center bottom; }
+
+/* Visible state — JS adds this class */
+.fade-up.visible,
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+
+
+/* ============================================================
+   STAGGER DELAYS
+   Method 1: inline style="--i:N" on the element
+   Method 2: .stagger-children wrapper → nth-child delays
+   ============================================================ */
+
+/* Method 1 — transition-delay driven by CSS custom property */
+.fade-up,
+.reveal {
+  transition-delay: calc(var(--i, 0) * 0.1s);
+}
+
+/* Method 2 — nth-child on .stagger-children */
+.stagger-children > *:nth-child(1)  { transition-delay: .00s; }
+.stagger-children > *:nth-child(2)  { transition-delay: .08s; }
+.stagger-children > *:nth-child(3)  { transition-delay: .16s; }
+.stagger-children > *:nth-child(4)  { transition-delay: .24s; }
+.stagger-children > *:nth-child(5)  { transition-delay: .32s; }
+.stagger-children > *:nth-child(6)  { transition-delay: .40s; }
+.stagger-children > *:nth-child(7)  { transition-delay: .48s; }
+.stagger-children > *:nth-child(8)  { transition-delay: .56s; }
+.stagger-children > *:nth-child(9)  { transition-delay: .64s; }
+.stagger-children > *:nth-child(10) { transition-delay: .72s; }
+
+
+/* ============================================================
+   ACCENT LINE — width expands when intersected
+   ============================================================ */
+
+.accent-line-anim {
+  width: 0;
+  transition: width .5s cubic-bezier(.22,.61,.36,1) .2s;
+}
+.accent-line-anim.visible { width: 48px; }
+
+
+/* ============================================================
+   CARD HOVER
+   Hover transform only — transition property stays in main.css
+   ============================================================ */
+
+.service-card:hover,
+.value-card:hover,
+.location-card:hover,
+.iso-badge:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,.12);
+}
+
+
+/* ============================================================
+   BUTTON HOVER
+   Transform only — base transition defined in main.css
+   ============================================================ */
+
+.btn:hover  { transform: translateY(-2px) scale(1.02); }
+.btn:active { transform: translateY(0)    scale(1); }
+
+
+/* ============================================================
+   NAV LINK HOVER GLOW
+   ============================================================ */
+
+.nav__link:hover { text-shadow: 0 0 20px rgba(74,171,155,.4); }
+
+
+/* ============================================================
+   PARTICLES (injected by JS into .hero__particles)
+   ============================================================ */
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  pointer-events: none;
+  animation: particleDrift linear infinite;
+}
+
+
+/* ============================================================
+   ABOUT IMAGE FLOAT
+   ============================================================ */
+
+.about__image-wrap.float { animation: floatY 5s ease-in-out infinite; }
+
+
+/* ============================================================
+   SHIMMER SKELETON
+   ============================================================ */
+
+.shimmer {
+  background: linear-gradient(90deg, var(--color-light) 25%, #e8e8e8 50%, var(--color-light) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+
+/* ============================================================
+   REDUCED MOTION — respect prefers-reduced-motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:        .01ms !important;
+    animation-iteration-count: 1     !important;
+    transition-duration:       .01ms !important;
+    transition-delay:          0s    !important;
+  }
+
+  /* Ensure scroll-reveal elements show immediately */
+  .fade-up,
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .accent-line-anim { width: 48px; }
+}

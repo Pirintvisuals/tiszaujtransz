@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ismerje meg a Tiszaújváros Transz Kft.-t — több mint 25 éve az építőipar megbízható szereplői. Saját gépparkkal, ISO tanúsítvánnyal, Miskolcon és Tiszaújvárosban.">
+  <title>Rólunk — Tiszaújváros Transz Kft.</title>
+  <link rel="icon" type="image/png" href="https://tiszaujvarostransz.hu/wp-content/uploads/2022/10/TT-logo-H-GP-csop.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+
+    /* ── Page Hero ── */
+    .page-hero {
+      position: relative;
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .page-hero__bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(to bottom, rgba(8,28,22,.88) 0%, rgba(8,28,22,.5) 55%, rgba(8,28,22,.82) 100%),
+        url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80');
+      background-size: cover;
+      background-position: center 40%;
+    }
+    .page-hero__inner {
+      position: relative; z-index: 2;
+      width: 100%;
+      padding: 5rem 0 2.5rem;
+    }
+    .page-hero__eyebrow {
+      display: inline-flex; align-items: center; gap: .65rem;
+      font-family: var(--font-heading); font-size: .6875rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(255,255,255,.55); margin-bottom: 1.4rem;
+    }
+    .page-hero__eyebrow::before {
+      content: '';
+      width: 28px; height: 2px;
+      background: var(--color-primary-light); border-radius: 2px; flex-shrink: 0;
+    }
+    .page-hero__title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-weight: 800; color: #fff;
+      line-height: 1.08; letter-spacing: -.025em;
+      max-width: 16ch; margin-bottom: 1.4rem;
+      text-shadow: 0 2px 24px rgba(0,0,0,.3);
+    }
+    .page-hero__title em { font-style: normal; color: var(--color-primary-light); }
+    .page-hero__sub {
+      font-size: clamp(.95rem, 1.8vw, 1.125rem);
+      color: rgba(255,255,255,.7); line-height: 1.75;
+      max-width: 52ch; margin-bottom: 2.25rem;
+    }
+    .page-hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .page-hero__breadcrumb {
+      display: flex; align-items: center; gap: .45rem;
+      font-size: .75rem; color: rgba(255,255,255,.45); margin-top: 1.5rem;
+    }
+    .page-hero__breadcrumb a { color: rgba(255,255,255,.55); transition: color .2s; }
+    .page-hero__breadcrumb a:hover { color: #fff; }
+    .page-hero__breadcrumb svg { width: 10px; height: 10px; flex-shrink: 0; }
+
+    /* ── Intro split ── */
+    .intro-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    @media (max-width: 860px) { .intro-split { grid-template-columns: 1fr; gap: 3rem; } }
+
+    .intro__image {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .intro__image img {
+      width: 100%; height: 460px; object-fit: cover; display: block;
+      transition: transform .8s ease;
+    }
+    .intro__image:hover img { transform: scale(1.04); }
+    .intro__image-badge {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: var(--color-primary);
+      color: #fff; border-radius: var(--radius-md);
+      padding: 1.2rem 1.6rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
+    .intro__image-badge strong {
+      display: block;
+      font-family: var(--font-heading); font-size: 2.4rem; font-weight: 800; line-height: 1;
+    }
+    .intro__image-badge span {
+      font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; opacity: .85;
+    }
+    .intro__text p {
+      font-size: 1.05rem; line-height: 1.85; color: var(--color-dark); margin-bottom: 1.3rem;
+    }
+    .intro__text p:last-of-type { margin-bottom: 2rem; }
+
+    /* ── Stats strip ── */
+    .stats-strip { background: var(--color-primary); padding: 4.5rem 0; }
+    .stats-strip__grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center;
+    }
+    @media (max-width: 700px) { .stats-strip__grid { grid-template-columns: 1fr 1fr; } }
+    .stat-item { color: #fff; }
+    .stat-item__num {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 800; line-height: 1; display: block;
+    }
+    .stat-item__num sup { font-size: .5em; vertical-align: super; opacity: .8; }
+    .stat-item__divider { width: 28px; height: 2px; background: rgba(255,255,255,.3); margin: .7rem auto 0; border-radius: 2px; }
+    .stat-item__label { display: block; font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; opacity: .72; margin-top: .5rem; }
+
+    /* ── Location cards ── */
+    .locations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    @media (max-width: 640px) { .locations-grid { grid-template-columns: 1fr; } }
+    .location-card { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); position: relative; }
+    .location-card__img { width: 100%; height: 280px; object-fit: cover; display: block; transition: transform .7s ease; }
+    .location-card:hover .location-card__img { transform: scale(1.05); }
+    .location-card__body {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.82) 0%, rgba(0,0,0,.6) 55%, transparent 100%);
+      padding: 2.5rem 1.75rem 1.75rem; color: #fff;
+      text-shadow: 0 1px 4px rgba(0,0,0,.6);
+    }
+    .location-card__label {
+      display: block;
+      font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--color-primary-light); margin-bottom: .4rem;
+    }
+    .location-card__city { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; line-height: 1.1; color: #fff !important; text-shadow: 0 2px 8px rgba(0,0,0,.7); }
+
+    /* ── ISO / Quality split ── */
+    .iso-split { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    @media (max-width: 860px) { .iso-split { grid-template-columns: 1fr; gap: 3rem; } }
+    .iso__text p { font-size: 1rem; line-height: 1.85; color: var(--color-dark); margin-bottom: 1.2rem; }
+    .iso__text p:last-child { margin-bottom: 0; }
+
+    .location-card__overlay { background: rgba(0,0,0,.55) !important; }
+    .location-card__content { color: #fff !important; }
+    .location-card__content * { color: #fff !important; text-shadow: 0 1px 4px rgba(0,0,0,.55); }
+
+    .video-caption {
+      font-size: .875rem;
+      color: #555;
+      margin-top: .75rem;
+      line-height: 1.6;
+      max-width: 560px;
+      font-style: italic;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<header class="nav" role="banner">
+  <div class="nav__inner">
+
+    <div class="nav__brand">
+      <img class="nav__logo" src="https://tiszaujvarostransz.hu/wp-content/uploads/2022/10/TT-logo-H-GP-csop.png"
+           alt="Tiszaújváros Transz logó" height="46" usemap="#logo-map">
+      <map name="logo-map">
+        <area shape="rect" coords="0,0,700,160" href="index.html" alt="Tiszaújváros Transz főoldal">
+        <area shape="rect" coords="700,0,1000,160" href="https://greenplan.hu/" alt="Green Plan Csoport tagja" target="_blank" rel="noopener">
+      </map>
+    </div>
+
+    <nav class="nav__menu" aria-label="Főnavigáció">
+      <ul role="list">
+        <li class="nav__item"><a class="nav__link" href="index.html">Főoldal</a></li>
+
+        <li class="nav__item active" aria-haspopup="true">
+          <a class="nav__link" href="rolunk.html">Rólunk
+            <svg class="chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="2 4 6 8 10 4"/>
+            </svg>
+          </a>
+          <ul class="nav__dropdown" role="list">
+            <li><a class="nav__dropdown-link" href="rolunk.html">Cégünkről</a></li>
+            <li><a class="nav__dropdown-link" href="media-megjelenes.html">Média megjelenés</a></li>
+          </ul>
+        </li>
+
+        <li class="nav__item" aria-haspopup="true">
+          <a class="nav__link" href="#">Szolgáltatások
+            <svg class="chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="2 4 6 8 10 4"/>
+            </svg>
+          </a>
+          <ul class="nav__dropdown" role="list">
+            <li><a class="nav__dropdown-link" href="generalkivitelezes.html">Generálkivitelezés</a></li>
+            <li><a class="nav__dropdown-link" href="epitoipari-fovallalkozas.html">Építőipari fővállalkozás</a></li>
+            <li><a class="nav__dropdown-link" href="magasepites.html">Magasépítés</a></li>
+            <li><a class="nav__dropdown-link" href="beton-es-vasbeton-epites.html">Beton és vasbeton építés</a></li>
+            <li><a class="nav__dropdown-link" href="ut-kozmu-melyepites.html">Út-, közmű- és mélyépítés</a></li>
+            <li><a class="nav__dropdown-link" href="gepi-foldmunkavegzes.html">Gépi földmunkavégzés</a></li>
+          </ul>
+        </li>
+
+        <li class="nav__item"><a class="nav__link" href="referenciak.html">Referenciák</a></li>
+        <li class="nav__item"><a class="nav__link" href="karrier.html">Karrier</a></li>
+        <li class="nav__item nav__item--dropdown">
+          <a href="kapcsolat.html" class="nav__link nav__link--cta" aria-haspopup="true">Kapcsolat</a>
+          <ul class="nav__dropdown">
+            <li><a href="bejelentesek.html" class="nav__dropdown-link">Bejelentések</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <button class="nav__hamburger" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-overlay">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+</header>
+
+<!-- Mobile overlay -->
+<div class="nav__mobile-overlay" id="mobile-overlay" role="dialog" aria-label="Mobil navigáció">
+  <div class="nav__mobile-panel">
+    <button class="nav__mobile-close nav__mobile-toggle" aria-label="Menü bezárása">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+           stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <nav aria-label="Mobil navigáció">
+      <ul class="nav__mobile-list">
+        <li><a href="index.html">Főoldal</a></li>
+        <li>
+          <button class="nav__mobile-toggle" data-toggle="mob-rolunk" aria-expanded="false">
+            Rólunk <svg class="mobile-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2 4 6 8 10 4"/></svg>
+          </button>
+          <ul class="nav__mobile-submenu" id="mob-rolunk">
+            <li><a href="rolunk.html">Cégünkről</a></li>
+            <li><a href="media-megjelenes.html">Média megjelenés</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="nav__mobile-toggle" data-toggle="mob-szolg" aria-expanded="false">
+            Szolgáltatások <svg class="mobile-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="2 4 6 8 10 4"/></svg>
+          </button>
+          <ul class="nav__mobile-submenu" id="mob-szolg">
+            <li><a href="generalkivitelezes.html">Generálkivitelezés</a></li>
+            <li><a href="epitoipari-fovallalkozas.html">Építőipari fővállalkozás</a></li>
+            <li><a href="magasepites.html">Magasépítés</a></li>
+            <li><a href="beton-es-vasbeton-epites.html">Beton és vasbeton építés</a></li>
+            <li><a href="ut-kozmu-melyepites.html">Út-, közmű- és mélyépítés</a></li>
+            <li><a href="gepi-foldmunkavegzes.html">Gépi földmunkavégzés</a></li>
+          </ul>
+        </li>
+        <li><a href="referenciak.html">Referenciák</a></li>
+        <li><a href="karrier.html">Karrier</a></li>
+        <li><a href="kapcsolat.html">Kapcsolat</a></li>
+        <li><a href="bejelentesek.html">Bejelentések</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     PAGE HERO
+     ============================================================ -->
+<section class="page-hero" aria-labelledby="page-hero-title">
+  <div class="page-hero__bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="page-hero__inner">
+
+      <p class="page-hero__eyebrow hero-anim-eyebrow">Tiszaújváros Transz Kft.</p>
+
+      <h1 class="page-hero__title hero-anim-title" id="page-hero-title">
+        Alkotunk,<br>átalakítunk,<br><em>fejlesztünk.</em>
+      </h1>
+
+      <p class="page-hero__sub hero-anim-subtitle">
+        Alkotunk, átalakítunk, bérbeadjuk épületeinket, földmunkákat végzünk.
+        Azt csináljuk, amit szeretünk, és amiben a legjobbak vagyunk.
+      </p>
+
+      <nav class="page-hero__breadcrumb hero-anim-scroll" aria-label="Navigációs útmutató">
+        <a href="index.html">Főoldal</a>
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="4 2 8 6 4 10"/>
+        </svg>
+        <span>Rólunk</span>
+      </nav>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     COMPANY INTRO
+     ============================================================ -->
+<section class="section" aria-labelledby="intro-heading">
+  <div class="container">
+    <div class="intro-split">
+
+      <div class="intro__image reveal reveal--left">
+        <img
+          src="unsplash/general (1).jpg"
+          alt="Tiszaújváros Transz Kft. — építési projekt"
+          width="600" height="460" loading="eager"
+          style="object-fit: cover; object-position: center 40%; width: 100%; border-radius: 8px;"
+        >
+        <div class="intro__image-badge">
+          <strong>25<sup>+</sup></strong>
+          <span>Év tapasztalat</span>
+        </div>
+      </div>
+
+      <div class="intro__text reveal reveal--right">
+        <span class="section-label">Cégünkről</span>
+        <span class="accent-line accent-line-anim"></span>
+        <h2 class="section-title" id="intro-heading">Tiszaújváros<br>Transz Kft.</h2>
+
+        <p>
+          Saját gépparkunk, emberi erőforrásunk, több évtizedre visszanyúló kapcsolatrendszerünk
+          és megfontolt gazdaságpolitikánk tesz minket igazán erőssé az építőipari piacon.
+          Az eddig elkészült munkáink állítanak emléket és fémjelzik azt az utat, amin a cégünk
+          jár és aminek eredményeképp évről évre dinamikusan fejlődünk.
+        </p>
+        <p>
+          Mára cégünk egy jelentős kapacitással bíró, multinacionális vállalatok kiszolgálására
+          is alkalmas vállalkozássá nőtte ki magát.
+        </p>
+        <p>
+          Telephelyeinket Borsod-Abaúj-Zemplén vármegye két, az iparban meghatározó városában,
+          Miskolcon és Tiszaújvárosban üzemeltetjük. Megbízóinktól kapott bizalmat első osztályú
+          munkával háláljuk meg. Rendszeresen dolgozunk az ország meghatározó vállalatainak.
+          Több áru- és irodaházat építettünk a <strong>Hewlett-Packard</strong>,
+          a <strong>BOSCH</strong> és a <strong>JYSK</strong> részére.
+          Alkotunk, átalakítunk és földmunkákat végzünk. Azt csináljuk, amit szeretünk,
+          és amiben a legjobbak vagyunk, hogy a lehető legjobbat nyújtsuk megrendelőinknek.
+        </p>
+        <a class="btn btn--outline-primary" href="kapcsolat.html">Vegye fel velünk a kapcsolatot</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     STATS STRIP
+     ============================================================ -->
+<div class="stats-strip" aria-label="Számokban">
+  <div class="container">
+    <div class="stats-strip__grid stagger-children">
+      <div class="stat-item reveal">
+        <span class="stat-item__num" data-count="25"><span class="count-val">0</span><sup>+</sup></span>
+        <div class="stat-item__divider"></div>
+        <span class="stat-item__label">Év tapasztalat</span>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-item__num" data-count="200"><span class="count-val">0</span><sup>+</sup></span>
+        <div class="stat-item__divider"></div>
+        <span class="stat-item__label">Befejezett projekt</span>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-item__num" data-count="50"><span class="count-val">0</span><sup>+</sup></span>
+        <div class="stat-item__divider"></div>
+        <span class="stat-item__label">Szakember</span>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-item__num" data-count="2"><span class="count-val">0</span></span>
+        <div class="stat-item__divider"></div>
+        <span class="stat-item__label">Telephely</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     LOCATIONS
+     ============================================================ -->
+<section class="section" style="background:var(--color-light);" aria-labelledby="locations-heading">
+  <div class="container">
+
+    <div class="reveal" style="max-width:600px; margin-bottom:3.5rem;">
+      <span class="section-label">Telephelyeink</span>
+      <span class="accent-line accent-line-anim"></span>
+      <h2 class="section-title" id="locations-heading">Borsod-Abaúj-Zemplén<br>vármegye két városában</h2>
+      <p class="section-desc">
+        Miskolcon és Tiszaújvárosban üzemeltetjük telephelyeinket — évtizedek tapasztalatai alapján,
+        a piaci igényekhez igazodva építettük ki tevékenységeink körét.
+      </p>
+    </div>
+
+    <div class="locations-grid stagger-children">
+
+      <div class="location-card reveal">
+        <img
+          class="location-card__img"
+          src="https://tiszaujvarostransz.hu/wp-content/uploads/2022/10/tt-pic-03.jpg"
+          alt="Tiszaújváros — székhely" loading="lazy"
+          style="object-position: center 30%"
+        >
+        <div class="location-card__body">
+          <span class="location-card__label">Székhely</span>
+          <h3 class="location-card__city">Tiszaújváros</h3>
+          <p style="font-size:.88rem; color:rgba(255,255,255,.65); margin-top:.4rem;">Kandó Kálmán u. 2., 3580</p>
+        </div>
+      </div>
+
+      <div class="location-card reveal">
+        <img
+          class="location-card__img"
+          src="https://tiszaujvarostransz.hu/wp-content/uploads/2022/10/tt-pic-04.jpg"
+          alt="Miskolc — telephely" loading="lazy"
+          style="object-position: center 30%"
+        >
+        <div class="location-card__body">
+          <span class="location-card__label">Telephely</span>
+          <h3 class="location-card__city">Miskolc</h3>
+          <p style="font-size:.88rem; color:rgba(255,255,255,.65); margin-top:.4rem;">Borsod-Abaúj-Zemplén vármegye</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ISO / MINŐSÉGIRÁNYÍTÁS
+     ============================================================ -->
+<section class="section" aria-labelledby="iso-heading">
+  <div class="container">
+
+    <!-- Top row: text left, videos right -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;">
+
+      <!-- Left: text + ISO certs below -->
+      <div class="reveal reveal--left">
+        <span class="section-label">Minőségirányítás</span>
+        <span class="accent-line accent-line-anim"></span>
+        <h2 class="section-title" id="iso-heading">ISO tanúsított<br>minőség és környezet</h2>
+        <p style="margin-bottom:1rem;">
+          Az eredményes gazdálkodás és a folyamatos fejlődés érdekében vállalkozásunk életében kiemelt szerepet kap a minőség és környezetpolitika, hogy hosszú távú és kifogástalan minőségű szolgáltatásokat nyújtsunk ügyfeleink számára. Társaságunk bevezette az <strong>ISO 9001</strong> és <strong>ISO 14001</strong>-es minőségirányítási rendszert.
+        </p>
+        <p style="margin-bottom:1rem;">
+          A Tiszaújváros Transz Kft. tudatos vállalatfejlesztési koncepciójába illesztve mindent megtesz azért, hogy az MSZ EN ISO 9001:2015 és MSZ EN ISO 14001:2015 szabványok szerinti integrált irányítási rendszerünk hatékonyságát a folyamatokban meghatározott szinten tartsuk, és folyamatosan tovább fejlesszük. Rendszerünk alapja a szolgáltatási folyamatok szabályozását tartalmazó dokumentációs rendszer, amelynek segítségével nő cégcsoportunk hatékonysága, az esetleges folyamatbeli ütközések kiszűrhetőek.
+        </p>
+        <p style="margin-bottom:2rem;">
+          A tevékenységek megfelelő dokumentálása a folyamatok átláthatóságát teremti meg, mindemellett a minőségirányítási rendszert érintő összes kérdésben törekszünk arra, hogy a létrehozott struktúra legyen egyszerű, közérthető, világosan fogalmazza meg céljainkat és mindenki könnyen azonosulhasson a kitűzött feladatokkal.
+        </p>
+
+        <!-- ISO certs below text -->
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <div style="border:2px solid #1a1a1a; border-radius:10px; padding:1.25rem 1.75rem; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,.08); flex:1; min-width:160px;">
+            <div style="font-family:'Poppins',sans-serif; font-size:1rem; font-weight:700; color:#1a1a1a;">CertUnion</div>
+            <div style="font-size:.55rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:#555; margin-bottom:.6rem;">TANÚSÍTOTT RENDSZER</div>
+            <hr style="border:none; border-top:2px solid #1a1a1a; margin-bottom:.6rem;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:.75rem;">
+              <span style="font-family:'Poppins',sans-serif; font-size:1.35rem; font-weight:700; color:#1a1a1a;">ISO 9001</span>
+              <svg width="20" height="20" viewBox="0 0 22 22" fill="none" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 11 8.5 17 19 5"/></svg>
+            </div>
+          </div>
+          <div style="border:2px solid #1a1a1a; border-radius:10px; padding:1.25rem 1.75rem; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,.08); flex:1; min-width:160px;">
+            <div style="font-family:'Poppins',sans-serif; font-size:1rem; font-weight:700; color:#1a1a1a;">CertUnion</div>
+            <div style="font-size:.55rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:#555; margin-bottom:.6rem;">TANÚSÍTOTT RENDSZER</div>
+            <hr style="border:none; border-top:2px solid #1a1a1a; margin-bottom:.6rem;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:.75rem;">
+              <span style="font-family:'Poppins',sans-serif; font-size:1.35rem; font-weight:700; color:#1a1a1a;">ISO 14001</span>
+              <svg width="20" height="20" viewBox="0 0 22 22" fill="none" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 11 8.5 17 19 5"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: videos stacked -->
+      <div style="display:flex; flex-direction:column; gap:2rem; max-width:400px; justify-self:end;">
+        <div class="video-embed reveal">
+          <iframe
+            src="https://www.youtube.com/embed/grq5MqPFAww"
+            title="Tiszaújváros Transz Kft. — bemutató videó"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          <h4 style="font-family:var(--font-heading); font-size:.95rem; font-weight:700; color:var(--color-dark); margin:.75rem 0 .25rem;">Bemutatkozó videó</h4>
+          <p class="video-caption">Cégünk bemutatója, saját gépparkunk és referenciáink — 25 éve megbízható partner az építőiparban.</p>
+        </div>
+        <div class="video-embed reveal">
+          <iframe
+            src="https://www.youtube.com/embed/2vjGQ6JElxY"
+            title="Tiszaújváros Transz Kft. — minőségirányítás"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          <h4 style="font-family:var(--font-heading); font-size:.95rem; font-weight:700; color:var(--color-dark); margin:.75rem 0 .25rem;">Minőségirányítás és ISO tanúsítványunk</h4>
+          <p class="video-caption">Hogyan biztosítjuk az egységes minőséget minden folyamatban — az anyagbeszerzéstől az átadásig.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<section class="page-cta" aria-labelledby="cta-heading">
+  <div class="page-cta__bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="page-cta__inner reveal">
+      <p class="page-cta__label">Dolgozzunk együtt</p>
+      <h2 class="page-cta__title" id="cta-heading">Indítsuk el közösen<br>a következő projektet!</h2>
+      <p class="page-cta__sub">
+        Legyen szó ipari beruházásról, lakóépületről vagy infrastruktúra fejlesztésről — készen állunk.
+      </p>
+      <div class="page-cta__actions">
+        <a class="btn btn--primary" href="kapcsolat.html">Kapcsolat felvétele</a>
+        <a class="btn btn--outline-white" href="referenciak.html">Referenciáink</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+
+      <div class="footer__brand">
+        <a class="footer__logo" href="index.html">
+          <img src="https://tiszaujvarostransz.hu/wp-content/uploads/2022/10/TT-logo-H-GP-csop.png"
+               alt="Tiszaújváros Transz logó" height="36">
+        </a>
+        <p class="footer__tagline">Több, mint 25 éve megbízható partner az építőiparban. Kimagasló minőség, határidős teljesítés.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+                <div class="footer__iso" style="margin-top:.875rem; display:inline-flex; align-items:center; gap:.5rem; padding:.4rem .875rem; border:1px solid rgba(255,255,255,.18); border-radius:6px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <span style="font-size:.6875rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.65);">ISO 9001:2015</span>
+        </div>
+      </div>
+
+      <div class="footer__nav">
+        <h3 class="footer__heading">Navigáció</h3>
+        <nav class="footer__nav-links">
+          <a href="index.html">Főoldal</a>
+          <a href="rolunk.html">Rólunk</a>
+          <a href="generalkivitelezes.html">Szolgáltatások</a>
+          <a href="referenciak.html">Referenciák</a>
+          <a href="karrier.html">Karrier</a>
+          <a href="kapcsolat.html">Kapcsolat</a>
+          <a href="bejelentesek.html">Bejelentések</a>
+          <a href="media-megjelenes.html">Média megjelenés</a>
+        </nav>
+      </div>
+
+      <div class="footer__contact">
+        <h3 class="footer__heading">Elérhetőség</h3>
+        <address class="footer__contact-list" style="font-style:normal;">
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Tiszaújváros Transz Kft.<br>3580 Tiszaújváros, Kandó Kálmán u. 2.</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <span><a href="tel:+36307510000">+36 30 751 0000</a></span>
+          </div>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span><a href="mailto:info@tiszaujvarostransz.hu">info@tiszaujvarostransz.hu</a></span>
+          </div>
+        </address>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">&copy; <span id="footer-year"></span> Tiszaújváros Transz Kft. — Minden jog fenntartva.</p>
+      <nav class="footer__bottom-links">
+        <a href="#">Adatvédelem</a>
+        <a href="#">Sütik</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

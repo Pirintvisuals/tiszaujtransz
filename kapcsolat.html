@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kapcsolat — Tiszaújváros Transz Kft. Elérhetőségek, kapcsolatfelvételi űrlap és csapat.">
+  <title>Kapcsolat — Tiszaújváros Transz Kft.</title>
+  <link rel="icon" type="image/png" href="https://tiszaujvarostransz.hu/wp-content/uploads/2022/10/TT-logo-H-GP-csop.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+
+    /* ── Page Hero ── */
+    .page-hero {
+      position: relative;
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .page-hero__bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(to bottom, rgba(8,28,22,.88) 0%, rgba(8,28,22,.5) 55%, rgba(8,28,22,.82) 100%),
+        url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1600&q=80');
+      background-size: cover;
+      background-position: center 40%;
+    }
+    .page-hero__inner {
+      position: relative; z-index: 2;
+      width: 100%;
+      padding: 5rem 0 2.5rem;
+    }
+    .page-hero__eyebrow {
+      display: inline-flex; align-items: center; gap: .65rem;
+      font-family: var(--font-heading); font-size: .6875rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(255,255,255,.55); margin-bottom: 1.4rem;
+    }
+    .page-hero__eyebrow::before {
+      content: '';
+      width: 28px; height: 2px;
+      background: var(--color-primary-light); border-radius: 2px; flex-shrink: 0;
+    }
+    .page-hero__title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 800; color: #fff;
+      line-height: 1.08; letter-spacing: -.025em;
+      max-width: 18ch; margin-bottom: 1.4rem;
+      text-shadow: 0 2px 24px rgba(0,0,0,.3);
+    }
+    .page-hero__sub {
+      font-size: clamp(.95rem, 1.8vw, 1.125rem);
+      color: rgba(255,255,255,.7); line-height: 1.75;
+      max-width: 48ch;
+    }
+    .page-hero__breadcrumb {
+      display: flex; align-items: center; gap: .45rem;
+      font-size: .75rem; color: rgba(255,255,255,.45); margin-top: 3rem;
+    }
+    .page-hero__breadcrumb a { color: rgba(255,255,255,.55); transition: color .2s; }
+    .page-hero__breadcrumb a:hover { color: #fff; }
+    .page-hero__breadcrumb svg { width: 10px; height: 10px; flex-shrink: 0; }
+
+    /* ── Contact layout ── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: clamp(2.5rem, 5vw, 5rem);
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ── Contact form ── */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+    .form-group label {
+      font-family: var(--font-heading);
+      font-size: .75rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--color-dark); opacity: .65;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: .875rem 1.125rem;
+      font-family: var(--font-body); font-size: .9375rem;
+      color: var(--color-dark);
+      background: var(--color-light);
+      border: 1.5px solid rgba(0,0,0,.1);
+      border-radius: var(--radius-md);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(58,139,125,.15);
+    }
+    .form-group textarea { min-height: 160px; }
+    .contact-form .btn { align-self: flex-start; }
+
+    /* ── Contact info card ── */
+    .contact-info-card {
+      background: var(--color-light);
+      border: 1px solid rgba(0,0,0,.07);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+    }
+    .contact-info-card__heading {
+      font-family: var(--font-heading);
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--color-dark); margin-bottom: 1.5rem;
+    }
+    .contact-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .875rem;
+    }
+    .contact-info-item__icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: rgba(58,139,125,.1);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-info-item__icon svg {
+      width: 18px; height: 18px;
+      color: var(--color-primary);
+    }
+    .contact-info-item__label {
+      font-family: var(--font-heading);
+      font-size: .6875rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--color-dark); opacity: .45;
+      margin-bottom: .2rem;
+    }
+    .contact-info-item__value {
+      font-size: .9375rem;
+      color: var(--color-dark); line-height: 1.5;
+    }
+    .contact-info-item__value a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .contact-info-item__value a:hover { opacity: .75; }
+
+    /* ── Team layout ── */
+    .team-tiers {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      margin-top: 2.5rem;
+    }
+    /* Leader rows stay centred and narrower */
+    .team-tier--1,
+    .team-tier--3col {
+      max-width: 1000px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Each tier is a CSS grid row */
+    .team-tier { display: grid; gap: .875rem; }
+
+    /* Row 1: 1 card centred (~38% wide) */
+    .team-tier--1 {
+      grid-template-columns: minmax(0, 420px);
+      justify-content: center;
+    }
+    /* Row 2: 3 equal cards */
+    .team-tier--3col { grid-template-columns: repeat(3, 1fr); }
+    /* Rows: 4 equal cards per row */
+    .team-tier--5col { grid-template-columns: repeat(5, 1fr); }
+
+    /* Avatar initials circle */
+    .team-card__avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-heading); font-size: .8rem; font-weight: 700;
+      color: #fff; margin-bottom: .75rem;
+    }
+    /* Coloured top accent bar */
+    .team-card--compact { border-top: 3px solid transparent; }
+    .team-card--accent-green  { border-top-color: #3a8b7d; }
+    .team-card--accent-blue   { border-top-color: #2563eb; }
+    .team-card--accent-teal   { border-top-color: #0891b2; }
+    .team-card--accent-orange { border-top-color: #ea580c; }
+    .team-card--accent-purple { border-top-color: #7c3aed; }
+    .avatar--green  { background: #3a8b7d; }
+    .avatar--blue   { background: #2563eb; }
+    .avatar--teal   { background: #0891b2; }
+    .avatar--orange { background: #ea580c; }
+    .avatar--purple { background: #7c3aed; }
+
+    /* Thin labelled divider between tiers */
+    .team-divider {
+      display: flex;
+      align-items: center;
+      gap: .875rem;
+      margin: .5rem 0;
+    }
+    .team-divider::before,
+    .team-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(0,0,0,.09);
+    }
+    .team-divider span {
+      font-family: var(--font-heading);
+      font-size: .625rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(76,76,76,.38);
+      white-space: nowrap;
+    }
+
+    /* 4-column tier */
+    .team-tier--4col { grid-template-columns: repeat(4, 1fr); }
+
+    /* 2-card centered row */
+    .team-tier--2center {
+      display: flex;
+      gap: .875rem;
+      justify-content: center;
+    }
+    .team-tier--2center > .team-card {
+      flex: 0 1 calc((100% - 3 * .875rem) / 4);
+      min-width: 0;
+    }
+
+    /* Featured avatar larger */
+    .team-card--featured .team-card__avatar {
+      width: 52px; height: 52px;
+      font-size: 1rem; margin-bottom: 1rem;
+    }
+    /* Manager row avatar */
+    .team-card:not(.team-card--compact):not(.team-card--featured) .team-card__avatar {
+      width: 44px; height: 44px;
+      font-size: .875rem; margin-bottom: .875rem;
+    }
+
+    /* Responsive breakpoints */
+    @media (max-width: 1080px) {
+      .team-tier--5col { grid-template-columns: repeat(3, 1fr); }
+      .team-tier--4col { grid-template-columns: repeat(2, 1fr); }
+      .team-tier--2center > .team-card { flex: 0 1 calc((100% - .875rem) / 2); }
+    }
+    @media (max-width: 760px) {
+      .team-tier--3col  { grid-template-columns: repeat(2, 1fr); }
+      .team-tier--5col  { grid-template-columns: repeat(2, 1fr); }
+      .team-tier--1     { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .team-tier--3col,
+      .team-tier--4col,
+      .team-tier--5col  { grid-template-columns: 1fr; }
+      .team-tier--2center { flex-direction: column; }
+      .team-tier--2center > .team-card { flex: 1 1 auto; }
+    }
+
+    /* ── Cards ── */
+    .team-card {
+      background: var(--color-light);
+      border: 1px solid rgba(0,0,0,.07);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      transition: box-shadow .2s, transform .2s;
+    }
+    /* Irányítás (3-col) — smaller cards */
+    .team-tier--3col .team-card { padding: 1rem 1.25rem; }
+    .team-tier--3col .team-card__avatar { width: 38px; height: 38px; font-size: .8rem; }
+    .team-tier--3col .team-card__name { font-size: .9375rem; }
+    .team-tier--3col .team-card__role { font-size: .8125rem; margin-bottom: .6rem; }
+    .team-tier--3col .team-card__contact-item { font-size: .8125rem; }
+    .team-tier--3col .team-card__contact-item svg { width: 12px; height: 12px; }
+    .team-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,.09);
+      transform: translateY(-3px);
+    }
+    /* Featured — ügyvezető */
+    .team-card--featured {
+      background: #fff;
+      border-color: rgba(58,139,125,.25);
+      box-shadow: 0 4px 20px rgba(58,139,125,.1);
+      padding: 1.625rem 1.875rem;
+    }
+    .team-card--featured .team-card__name { font-size: 1.125rem; }
+    /* Compact — csapat rows */
+    .team-card--compact { padding: 1.125rem 1.25rem; }
+    .team-card--compact .team-card__name { font-size: .9375rem; }
+    .team-card--compact .team-card__role { font-size: .8125rem; margin-bottom: .75rem; }
+    .team-card--compact .team-card__contact-item { font-size: .8125rem; }
+    .team-card--compact .team-card__contact-item svg { width: 13px; height: 13px; }
+
+    .team-card__name {
+      font-family: var(--font-heading);
+      font-size: 1.0625rem; font-weight: 700;
+      color: var(--color-dark); margin-bottom: .25rem;
+    }
+    .team-card__role {
+      font-size: .9375rem;
+      color: var(--color-primary); font-weight: 500;
+      margin-bottom: .9rem;
+      text-transform: capitalize;
+    }
+    .team-card__contacts {
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+    }
+    .team-card__contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .45rem;
+      font-size: .875rem;
+      color: var(--color-body);
+      min-width: 0;
+    }
+    .team-card__contact-item svg {
+      width: 14px; height: 14px; flex-shrink: 0;
+      color: var(--color-primary); opacity: .7;
+      margin-top: 2px;
+    }
+    .team-card__contact-item a {
+      color: inherit;
+      text-decoration: none;
+      transition: color .2s;
+      overflow-wrap: break-word;
+      word-break: break-all;
+      min-width: 0;
+    }
+    .team-card__contact-item a:hover { color: var(--color-primary); }
+
+    /* ── Map ── */
+    .map-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      line-height: 0;
+    }
+    .map-wrap iframe {
+      width: 100%; height: 420px;
+      border: none; display: block;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<header class="nav" role="banner">
+  <div class="nav__inner">
+
+    <div class="nav__brand">
+      <img class="nav__logo" src="https://tiszaujvarostransz.hu/wp-content/uploads/2022/10/TT-logo-H-GP-csop.png"
+           alt="Tiszaújváros Transz logó" height="46" usemap="#logo-map">
+      <map name="logo-map">
+        <area shape="rect" coords="0,0,700,160" href="index.html" alt="Tiszaújváros Transz főoldal">
+        <area shape="rect" coords="700,0,1000,160" href="https://greenplan.hu/" alt="Green Plan Csoport tagja" target="_blank" rel="noopener">
+      </map>
+    </div>
+
+    <nav class="nav__menu" aria-label="Főnavigáció">
+      <ul role="list">
+        <li class="nav__item"><a class="nav__link" href="index.html">Főoldal</a></li>
+
+        <li class="nav__item" aria-haspopup="true">
+          <a class="nav__link" href="rolunk.html">Rólunk
+            <svg class="chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor"
+                 stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="2 4 6 8 10 4"/>
+            </svg>
+          </a>
+          <ul class="nav__dropdown" role="list">
+            <li><a class="nav__dropdown-link" href="rolunk.html">Cégünkről</a></li>
+            <li><a class="nav__dropdown-link" href="media-megjelenes.html">Média megjelenés</a></li>
+          </ul>
+        </li>
+
+        <li class="nav__item" aria-haspopup="true">
+          <a class="nav__link" href="#">Szolgáltatások
+            <svg class="chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor"
+                 stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="2 4 6 8 10 4"/>
+            </svg>
+          </a>
+          <ul class="nav__dropdown" role="list">
+            <li><a class="nav__dropdown-link" href="generalkivitelezes.html">Generálkivitelezés</a></li>
+            <li><a class="nav__dropdown-link" href="epitoipari-fovallalkozas.html">Építőipari fővállalkozás</a></li>
+            <li><a class="nav__dropdown-link" href="magasepites.html">Magasépítés</a></li>
+            <li><a class="nav__dropdown-link" href="beton-es-vasbeton-epites.html">Beton és vasbeton építés</a></li>
+            <li><a class="nav__dropdown-link" href="ut-kozmu-melyepites.html">Út-, közmű- és mélyépítés</a></li>
+            <li><a class="nav__dropdown-link" href="gepi-foldmunkavegzes.html">Gépi földmunkavégzés</a></li>
+          </ul>
+        </li>
+
+        <li class="nav__item"><a class="nav__link" href="referenciak.html">Referenciák</a></li>
+        <li class="nav__item"><a class="nav__link" href="karrier.html">Karrier</a></li>
+        <li class="nav__item nav__item--dropdown active">
+          <a href="kapcsolat.html" class="nav__link nav__link--cta" aria-haspopup="true">Kapcsolat</a>
+          <ul class="nav__dropdown">
+            <li><a href="bejelentesek.html" class="nav__dropdown-link">Bejelentések</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <button class="nav__hamburger" aria-label="Menü megnyitása"
+            aria-expanded="false" aria-controls="mobile-overlay">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+</header>
+
+<!-- Mobile overlay -->
+<div class="nav__mobile-overlay" id="mobile-overlay" role="dialog" aria-modal="true"
+     aria-label="Mobil navigáció">
+  <div class="nav__mobile-panel">
+    <button class="nav__mobile-close" aria-label="Menü bezárása">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <nav aria-label="Mobil navigáció">
+      <ul class="nav__mobile-list">
+        <li><a href="index.html">Főoldal</a></li>
+        <li>
+          <button class="nav__mobile-toggle" data-toggle="mob-rolunk" aria-expanded="false">
+            Rólunk
+            <svg class="mobile-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor"
+                 stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="2 4 6 8 10 4"/>
+            </svg>
+          </button>
+          <ul class="nav__mobile-submenu" id="mob-rolunk">
+            <li><a href="rolunk.html">Cégünkről</a></li>
+            <li><a href="media-megjelenes.html">Média megjelenés</a></li>
+          </ul>
+        </li>
+        <li>
+          <button class="nav__mobile-toggle" data-toggle="mob-szolg" aria-expanded="false">
+            Szolgáltatások
+            <svg class="mobile-chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor"
+                 stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="2 4 6 8 10 4"/>
+            </svg>
+          </button>
+          <ul class="nav__mobile-submenu" id="mob-szolg">
+            <li><a href="generalkivitelezes.html">Generálkivitelezés</a></li>
+            <li><a href="epitoipari-fovallalkozas.html">Építőipari fővállalkozás</a></li>
+            <li><a href="magasepites.html">Magasépítés</a></li>
+            <li><a href="beton-es-vasbeton-epites.html">Beton és vasbeton építés</a></li>
+            <li><a href="ut-kozmu-melyepites.html">Út-, közmű- és mélyépítés</a></li>
+            <li><a href="gepi-foldmunkavegzes.html">Gépi földmunkavégzés</a></li>
+          </ul>
+        </li>
+        <li><a href="referenciak.html">Referenciák</a></li>
+        <li><a href="karrier.html">Karrier</a></li>
+        <li><a href="kapcsolat.html">Kapcsolat</a></li>
+        <li><a href="bejelentesek.html">Bejelentések</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     PAGE HERO
+     ============================================================ -->
+<section class="page-hero" aria-labelledby="page-hero-title">
+  <div class="page-hero__bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="page-hero__inner">
+
+      <p class="page-hero__eyebrow hero-anim-eyebrow">Írjon nekünk</p>
+
+      <h1 class="page-hero__title hero-anim-title" id="page-hero-title">
+        Kapcsolat
+      </h1>
+
+      <p class="page-hero__sub hero-anim-subtitle">
+        Szakembereink készségesen válaszolnak kérdéseire és segítenek megvalósítani elképzeléseit.
+      </p>
+
+      <div class="page-hero__breadcrumb hero-anim-scroll">
+        <a href="index.html">Főoldal</a>
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="2 4 6 8 10 4" transform="rotate(-90 6 6)"/>
+        </svg>
+        <span>Kapcsolat</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT FORM + INFO
+     ============================================================ -->
+<section class="section" aria-labelledby="contact-heading">
+  <div class="container" style="max-width:1440px;">
+
+    <div class="reveal" style="margin-bottom:2.5rem;">
+      <span class="section-label">Lépjen kapcsolatba velünk</span>
+      <span class="accent-line accent-line-anim"></span>
+      <h2 class="section-title" id="contact-heading" style="margin-top:.75rem;">Küldjön üzenetet</h2>
+    </div>
+
+    <div class="contact-layout">
+
+      <!-- Form -->
+      <div class="reveal">
+        <form class="contact-form" action="#" method="post" novalidate>
+
+          <div class="form-group">
+            <label for="contact-nev">Név</label>
+            <input type="text" id="contact-nev" name="nev"
+                   placeholder="Az Ön neve" autocomplete="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="email"
+                   placeholder="pelda@email.hu" autocomplete="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-telefon">Telefon</label>
+            <input type="tel" id="contact-telefon" name="telefon"
+                   placeholder="+36 30 000 0000" autocomplete="tel">
+          </div>
+
+          <div class="form-group">
+            <label for="company">Cégnév / Szervezet</label>
+            <input type="text" id="company" name="company" placeholder="Pl. Kovács Kft.">
+          </div>
+          <div class="form-group">
+            <label for="subject">Tárgy <span style="color:#e53e3e;">*</span></label>
+            <select id="subject" name="subject" required>
+              <option value="">Válasszon témát...</option>
+              <option value="generalkivitelezes">Generálkivitelezés</option>
+              <option value="magasepites">Magasépítés</option>
+              <option value="ut-kozmu">Út- és közműépítés</option>
+              <option value="foldmunka">Gépi földmunka</option>
+              <option value="beton">Beton és vasbeton szerkezetek</option>
+              <option value="egyeb">Egyéb megkeresés</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact-uzenet">Üzenet</label>
+            <textarea id="contact-uzenet" name="uzenet"
+                      placeholder="Írja le, miben segíthetünk..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary">Küldés</button>
+
+        </form>
+      </div>
+
+      <!-- Info -->
+      <div class="contact-info-card reveal">
+        <h3 class="contact-info-card__heading">Elérhetőségeink</h3>
+        <div class="contact-info-list">
+
+          <div class="contact-info-item">
+            <div class="contact-info-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <p class="contact-info-item__label">Cím</p>
+              <p class="contact-info-item__value">
+                Tiszaújváros Transz Kft.<br>
+                3580 Tiszaújváros, Kandó Kálmán u. 2.
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="contact-info-item__label">Telefon</p>
+              <p class="contact-info-item__value">
+                <a href="tel:+36307510000">+36 30 751 0000</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <p class="contact-info-item__label">Email</p>
+              <p class="contact-info-item__value">
+                <a href="mailto:info@tiszaujvarostransz.hu">info@tiszaujvarostransz.hu</a>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TEAM GRID
+     ============================================================ -->
+<section class="section section--light" aria-labelledby="team-heading">
+  <div class="container" style="max-width:1440px;">
+
+    <div class="reveal" style="margin-bottom:2rem;">
+      <span class="section-label">Csapatunk</span>
+      <span class="accent-line accent-line-anim"></span>
+      <h2 class="section-title" id="team-heading" style="margin-top:.75rem;">Kapcsolattartók</h2>
+    </div>
+
+    <div class="team-tiers">
+
+      <!-- ══ Row 1: Ügyvezető (1) ══ -->
+      <div class="team-tier team-tier--1">
+
+        <div class="team-card team-card--featured team-card--accent-green reveal">
+          <div class="team-card__avatar avatar--green">MP</div>
+          <p class="team-card__name">Mantlik Péter</p>
+          <p class="team-card__role">Ügyvezető</p>
+          <div class="team-card__contacts">
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:peter.mantlik@tiszaujvarostransz.hu">peter.mantlik@tiszaujvarostransz.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+36304057060">+36 30 405 7060</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── divider ── -->
+      <div class="team-divider"><span>Irányítás</span></div>
+
+      <!-- ══ Row 2: Vezetők (3) ══ -->
+      <div class="team-tier team-tier--3col">
+
+        <div class="team-card team-card--accent-teal reveal">
+          <div class="team-card__avatar avatar--teal">FA</div>
+          <p class="team-card__name">Fazekasné Kollár Anita</p>
+          <p class="team-card__role">Műszaki menedzser</p>
+          <div class="team-card__contacts">
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:anita.kollar@tiszaujvarostransz.hu">anita.kollar@tiszaujvarostransz.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+36303642339">+36 30 364 2339</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card team-card--accent-blue reveal">
+          <div class="team-card__avatar avatar--blue">NZ</div>
+          <p class="team-card__name">Nagy Zoltán</p>
+          <p class="team-card__role">Logisztikai vezető</p>
+          <div class="team-card__contacts">
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:nagy.zoltan@greenplan.hu">nagy.zoltan@greenplan.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+36706077273">+36 70 607 7273</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card team-card--accent-orange reveal">
+          <div class="team-card__avatar avatar--orange">GB</div>
+          <p class="team-card__name">Galuska Balázs</p>
+          <p class="team-card__role">Főmérnök</p>
+          <div class="team-card__contacts">
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:balazs.galuska@tiszaujvarostransz.hu">balazs.galuska@tiszaujvarostransz.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+36303555546">+36 30 355 5546</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── divider ── -->
+      <div class="team-divider"><span>Csapat</span></div>
+
+      <!-- ══ Row 3: Csapat 1–4 ══ -->
+      <div class="team-tier team-tier--4col">
+
+        <div class="team-card team-card--compact team-card--accent-green reveal" style="--i:0;">
+          <div class="team-card__avatar avatar--green">HG</div>
+          <p class="team-card__name">Homoki Gábor</p>
+          <p class="team-card__role">Projekt előkészítő</p>
+          <div class="team-card__contacts">
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:gabor.homoki@tiszaujvarostransz.hu">gabor.homoki@tiszaujvarostransz.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+36301942601">+36 30 194 2601</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card team-card--compact team-card--accent-blue reveal" style="--i:1;">
+          <div class="team-card__avatar avatar--blue">TG</div>
+          <p class="team-card__name">Tóth Georgina</p>
+          <p class="team-card__role">Szakmai irányító</p>
+          <div class="team-card__contacts">
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:georgina.toth@tiszaujvarostransz.hu">georgina.toth@tiszaujvarostransz.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+36304828878">+36 30 482 8878</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card team-card--compact team-card--accent-teal reveal" style="--i:2;">
+          <div class="team-card__avatar avatar--teal">PF</div>
+          <p class="team-card__name">Prágai Ferenc</p>
+          <p class="team-card__role">Építésvezető</p>
+          <div class="team-card__contacts">
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:pragai.ferenc@tiszaujvarostransz.hu">pragai.ferenc@tiszaujvarostransz.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+36308487896">+36 30 848 7896</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card team-card--compact team-card--accent-orange reveal" style="--i:3;">
+          <div class="team-card__avatar avatar--orange">SZA</div>
+          <p class="team-card__name">Szeszák Attila</p>
+          <p class="team-card__role">Útépítési üzletágvezető</p>
+          <div class="team-card__contacts">
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:attila.szeszak@tiszaujvarostransz.hu">attila.szeszak@tiszaujvarostransz.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+36302499682">+36 30 249 9682</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ══ Row 4: Csapat 5–8 ══ -->
+      <div class="team-tier team-tier--4col">
+
+        <div class="team-card team-card--compact team-card--accent-green reveal" style="--i:0;">
+          <div class="team-card__avatar avatar--green">PT</div>
+          <p class="team-card__name">Pirint Tímea</p>
+          <p class="team-card__role">Műszaki előkészítő</p>
+          <div class="team-card__contacts">
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:timea.pirint@tiszaujvarostransz.hu">timea.pirint@tiszaujvarostransz.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+36202220085">+36 20 222 0085</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card team-card--compact team-card--accent-teal reveal" style="--i:1;">
+          <div class="team-card__avatar avatar--teal">KK</div>
+          <p class="team-card__name">Kiss Katalin</p>
+          <p class="team-card__role">Projekt menedzser</p>
+          <div class="team-card__contacts">
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:katalin.kiss@tiszaujvarostransz.hu">katalin.kiss@tiszaujvarostransz.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+36209457461">+36 20 945 7461</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card team-card--compact team-card--accent-teal reveal" style="--i:2;">
+          <div class="team-card__avatar avatar--teal">LJ</div>
+          <p class="team-card__name">Lengyel József</p>
+          <p class="team-card__role">Építésvezető</p>
+          <div class="team-card__contacts">
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:jozsef.lengyel@tiszaujvarostransz.hu">jozsef.lengyel@tiszaujvarostransz.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+36308313257">+36 30 831 3257</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card team-card--compact team-card--accent-purple reveal" style="--i:3;">
+          <div class="team-card__avatar avatar--purple">JK</div>
+          <p class="team-card__name">Janocsko Kinga</p>
+          <p class="team-card__role">Pénzügyi munkatárs</p>
+          <div class="team-card__contacts">
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:kinga.janocsko@tiszaujvarostrans.hu">kinga.janocsko@tiszaujvarostrans.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:penzugy@tiszaujvarostransz.hu">penzugy@tiszaujvarostransz.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+36304725306">+36 30 472 5306</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ══ Row 5: Csapat 9 (centered) ══ -->
+      <div class="team-tier team-tier--2center">
+
+        <div class="team-card team-card--compact team-card--accent-teal reveal" style="--i:0;">
+          <div class="team-card__avatar avatar--teal">MM</div>
+          <p class="team-card__name">Madarász Marcell</p>
+          <p class="team-card__role">Építésvezető</p>
+          <div class="team-card__contacts">
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:marcell.madarasz@tiszaujvarostransz.hu">marcell.madarasz@tiszaujvarostransz.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+36705442785">+36 70 544 2785</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card team-card--compact team-card--accent-blue reveal" style="--i:1;">
+          <div class="team-card__avatar avatar--blue">BL</div>
+          <p class="team-card__name">Belényesi Lajosné</p>
+          <p class="team-card__role">Logisztikai munkatárs</p>
+          <div class="team-card__contacts">
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:marika.belenyesine@tiszaujvarostransz.hu">marika.belenyesine@tiszaujvarostransz.hu</a>
+            </div>
+            <div class="team-card__contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+36702296100">+36 70 229 6100</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     GOOGLE MAPS
+     ============================================================ -->
+<section class="section" aria-label="Térkép">
+  <div class="container">
+    <div class="map-wrap reveal">
+      <iframe
+        src="https://maps.google.com/maps?q=Kand%C3%B3+K%C3%A1lm%C3%A1n+utca+2%2C+Tisza%C3%BAjv%C3%A1ros%2C+3580&output=embed"
+        width="100%" height="400" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" title="Tiszaújváros Transz Kft. helyszín">
+      </iframe>
+      <p style="font-size:.8rem; color:#888; margin-top:.5rem;">
+        <a href="https://maps.google.com/?q=Tiszaújváros+Transz+Kft." target="_blank" rel="noopener" style="color:inherit; text-decoration:underline;">
+          Megtekintés nagyobb térképen →
+        </a>
+        &nbsp;·&nbsp; ⭐ 5.0 · 19 értékelés
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+
+      <div class="footer__brand">
+        <a class="footer__logo" href="index.html">
+          <img src="https://tiszaujvarostransz.hu/wp-content/uploads/2022/10/TT-logo-H-GP-csop.png"
+               alt="Tiszaújváros Transz logó" height="36">
+        </a>
+        <p class="footer__tagline">Több, mint 25 éve megbízható partner az építőiparban. Kimagasló minőség, határidős teljesítés.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer__nav">
+        <h3 class="footer__heading">Navigáció</h3>
+        <nav class="footer__nav-links">
+          <a href="index.html">Főoldal</a>
+          <a href="rolunk.html">Rólunk</a>
+          <a href="generalkivitelezes.html">Szolgáltatások</a>
+          <a href="referenciak.html">Referenciák</a>
+          <a href="karrier.html">Karrier</a>
+          <a href="kapcsolat.html">Kapcsolat</a>
+          <a href="bejelentesek.html">Bejelentések</a>
+          <a href="media-megjelenes.html">Média megjelenés</a>
+        </nav>
+      </div>
+
+      <div class="footer__contact">
+        <h3 class="footer__heading">Elérhetőség</h3>
+        <address class="footer__contact-list" style="font-style:normal;">
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Tiszaújváros Transz Kft.<br>3580 Tiszaújváros, Kandó Kálmán u. 2.</span>
+          </div>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.5 3.18 2 2 0 012.48.5h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l.86-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <span><a href="tel:+36307510000">+36 30 751 0000</a></span>
+          </div>
+          <div class="footer__contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span><a href="mailto:info@tiszaujvarostransz.hu">info@tiszaujvarostransz.hu</a></span>
+          </div>
+        </address>
+      </div>
+
+    </div>
+
+            <div class="footer__iso" style="margin-top:.875rem; display:inline-flex; align-items:center; gap:.5rem; padding:.4rem .875rem; border:1px solid rgba(255,255,255,.18); border-radius:6px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <span style="font-size:.6875rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.65);">ISO 9001:2015</span>
+        </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">&copy; <span id="footer-year"></span> Tiszaújváros Transz Kft. — Minden jog fenntartva.</p>
+      <nav class="footer__bottom-links">
+        <a href="#">Adatvédelem</a>
+        <a href="#">Sütik</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
