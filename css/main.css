@@ -892,9 +892,12 @@ h1, h2, h3, h4, h5, h6 {
   .footer__brand { grid-column: 1 / -1; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1080px) {
   .nav__menu      { display: none; }
   .nav__hamburger { display: flex; }
+}
+
+@media (max-width: 768px) {
   .services__grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .partner-logos  { gap: 1.5rem 2rem; }
 }
