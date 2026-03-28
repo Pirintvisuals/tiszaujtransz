@@ -493,7 +493,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero__title {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-size: clamp(1.75rem, 6vw, 4.5rem);
   font-weight: 800;
   color: #fff;
   line-height: 1.08;
@@ -590,7 +590,7 @@ h1, h2, h3, h4, h5, h6 {
 .about__body  { font-size: 1.0625rem; color: var(--color-dark); line-height: 1.82; margin-bottom: 2rem; max-width: 52ch; }
 
 .about__stats { display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
-.about__stat  { display: flex; flex-direction: column; gap: .2rem; min-width: 90px; }
+.about__stat  { display: flex; flex-direction: column; gap: .2rem; min-width: 0; }
 .about__stat-num {
   font-family: var(--font-heading);
   font-size: 2.125rem;
@@ -717,7 +717,7 @@ h1, h2, h3, h4, h5, h6 {
 .partner-logo {
   display: flex; align-items: center; justify-content: center;
   flex: 1 1 0;
-  min-width: 120px;
+  min-width: 80px;
   opacity: .72;
   transition: opacity var(--t-base), transform var(--t-base);
 }
@@ -1147,4 +1147,145 @@ img { max-width: 100%; height: auto; }
   gap: 1.5rem 2rem;
   align-items: center;
   justify-items: center;
+}
+
+
+/* ============================================================
+   RESPONSIVE — EXTENDED MOBILE & TABLET
+   ============================================================ */
+
+/* ── Large tablet (≤ 1024px) ───────────────────────────── */
+@media (max-width: 1024px) {
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Tablet (≤ 900px) ──────────────────────────────────── */
+@media (max-width: 900px) {
+  .partner-logo img { max-height: 80px !important; height: auto !important; }
+  .partner-logos    { justify-content: center; gap: 1.5rem; }
+}
+
+/* ── Tablet (≤ 768px) ──────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Services: remove artificial max-width cap on tablet */
+  .services__grid { max-width: 100%; }
+
+  /* Service card: reduce padding */
+  .service-card { padding: 1.75rem 1.375rem; }
+
+  /* Subpage heroes */
+  .page-hero__inner     { padding: 6rem 0 2.5rem !important; }
+  .page-hero__title     { font-size: clamp(1.6rem, 6vw, 2.8rem) !important; }
+  .page-hero__sub       { font-size: .9rem !important; max-width: 100% !important; }
+  .page-hero__breadcrumb { margin-top: 1.5rem !important; }
+
+  /* Hero Széchenyi logo */
+  .hero__content a[href*="palyazat"] img { width: 200px !important; }
+
+  /* About image height: less tall on tablet */
+  .about__image-wrap img { height: 380px; }
+
+  /* Partner logos padding */
+  .partner-logos { padding: 2rem 0; }
+}
+
+/* ── Large phone (≤ 640px) ─────────────────────────────── */
+@media (max-width: 640px) {
+  /* Partner logos: smaller + tighter */
+  .partner-logo img { max-height: 60px !important; }
+  .partner-logos    { gap: 1.25rem; }
+
+  /* Service card: compact */
+  .service-card { padding: 1.5rem 1.25rem; }
+  .service-card__icon { width: 60px; height: 60px; margin-bottom: 1rem; }
+
+  /* Reviews: single column */
+  .reviews-grid { grid-template-columns: 1fr; }
+
+  /* About image */
+  .about__image-wrap img { height: 300px; }
+
+  /* Ref card image */
+  .ref-card__img { height: 180px; }
+
+  /* Subpage hero */
+  .page-hero { min-height: 38vh !important; }
+  .page-hero__inner { padding: 5rem 0 2rem !important; }
+}
+
+/* ── Mobile (≤ 480px) ──────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Hero */
+  .hero__split { padding-top: calc(var(--nav-height) + 1.5rem) !important; }
+  .hero__subtitle { font-size: .9rem; }
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .hero__actions .btn { text-align: center; justify-content: center; }
+
+  /* Széchenyi logo */
+  .hero__content a[href*="palyazat"] img { width: 160px !important; margin-top: 1rem; }
+
+  /* Section titles */
+  .section-title { font-size: clamp(1.4rem, 7vw, 2rem); }
+
+  /* Service card */
+  .service-card { padding: 1.25rem 1rem; }
+  .service-card__title { font-size: .9375rem; }
+  .service-card__desc  { font-size: .875rem; }
+
+  /* About stats: 2-up grid */
+  .about__stats { gap: 1rem 1.5rem; }
+  .about__stat  { flex: 0 0 calc(50% - .75rem); }
+  .about__stat-num { font-size: 1.75rem; }
+
+  /* About image */
+  .about__image-wrap img { height: 260px; }
+
+  /* Subpage hero */
+  .page-hero { min-height: 32vh !important; }
+  .page-hero__inner { padding: 4.5rem 0 1.75rem !important; }
+
+  /* Partner logos: 3-per-row on small phones */
+  .partner-logo img { max-height: 50px !important; }
+  .partner-logos    { gap: 1rem 1.25rem; }
+
+  /* Ref card */
+  .ref-card__img  { height: 160px; }
+  .ref-card__body { padding: 1rem; }
+
+  /* Reviews */
+  .review-card { padding: 1.25rem; }
+}
+
+/* ── Small mobile (≤ 375px) ────────────────────────────── */
+@media (max-width: 375px) {
+  /* Nav */
+  :root { --nav-height: 64px; }
+
+  /* Tighter sections */
+  .section { padding: clamp(2rem, 8vw, 3.5rem) 0; }
+
+  /* Hero */
+  .hero__eyebrow { font-size: .5625rem; }
+
+  /* Partner logos */
+  .partner-logo img  { max-height: 40px !important; }
+  .partner-logos     { gap: .75rem 1rem; padding: 1.5rem 0; }
+
+  /* About stats single col on tiny screens */
+  .about__stats  { flex-direction: column; gap: .75rem; }
+  .about__stat   { flex: none; }
+  .about__stat-num { font-size: 1.5rem; }
+
+  /* About image */
+  .about__image-wrap img { height: 220px; }
+
+  /* Service card */
+  .service-card { padding: 1rem .875rem; }
+  .service-card__icon { width: 52px; height: 52px; }
+
+  /* Section title */
+  .section-title { font-size: clamp(1.25rem, 7vw, 1.75rem); }
+
+  /* Footer */
+  .footer__logo img { height: 28px; }
 }

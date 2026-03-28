@@ -357,6 +357,11 @@
     .team-card__contact-item a:hover { color: var(--color-primary); }
 
     /* ── Map ── */
+    @media (max-width: 560px) {
+      .map-wrap iframe { height: 300px; }
+      .contact-info-card { padding: 1.25rem; }
+    }
+
     .map-wrap {
       border-radius: var(--radius-lg);
       overflow: hidden;

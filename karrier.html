@@ -118,7 +118,7 @@
 
     .job-card__title {
       font-family: var(--font-heading);
-      font-size: 1.45rem;
+      font-size: clamp(1.1rem, 3.5vw, 1.45rem);
       font-weight: 800; color: var(--color-dark);
       line-height: 1.2;
       margin: 0;
@@ -148,6 +148,16 @@
     @media (max-width: 700px) {
       .job-card { grid-template-columns: 1fr; }
       .job-card__img-wrap { height: 200px; }
+    }
+    @media (max-width: 480px) {
+      .job-card__body { padding: 1.5rem; }
+      .job-card__img-wrap { height: 170px; }
+      .job-card__list { padding-left: 1rem; font-size: .8125rem; }
+      .job-card__desc { font-size: .8125rem; }
+    }
+    @media (max-width: 375px) {
+      .job-card__body { padding: 1.25rem; }
+      .job-card__img-wrap { height: 150px; }
     }
 
     .job-card__list { list-style: disc; font-size: .875rem; color: #444; line-height: 1.8; padding-left: 1.5rem; margin: .5rem 0 1rem; }

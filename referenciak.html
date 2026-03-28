@@ -116,6 +116,13 @@
       border-color: var(--color-primary);
     }
 
+    /* ── Filter bar mobile ── */
+    @media (max-width: 640px) {
+      .filter-bar { padding: 1rem 0; }
+      .filter-btn { padding: .25rem .625rem; font-size: .75rem; }
+      .filter-bar__label { font-size: .625rem; }
+    }
+
     /* ── References grid ── */
     .ref-grid {
       display: grid;
@@ -123,12 +130,8 @@
       gap: clamp(1.25rem, 2.5vw, 2rem);
       margin-top: 3rem;
     }
-    @media (max-width: 900px) {
-      .ref-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 560px) {
-      .ref-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 900px) { .ref-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .ref-grid { grid-template-columns: 1fr; margin-top: 1.5rem; } }
 
     /* Reference card */
     .ref-card {
@@ -150,9 +153,12 @@
       width: 100%; height: 220px;
       object-fit: cover; display: block;
     }
+    @media (max-width: 640px) { .ref-card__img { height: 180px; } }
+    @media (max-width: 375px) { .ref-card__img { height: 160px; } }
     .ref-card__body {
       padding: 1.25rem 1.375rem 1.5rem;
     }
+    @media (max-width: 480px) { .ref-card__body { padding: 1rem; } }
     .ref-card__badges {
       display: flex; gap: .5rem; flex-wrap: wrap;
       margin-bottom: .75rem;
