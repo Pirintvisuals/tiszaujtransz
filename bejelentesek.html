@@ -398,20 +398,27 @@
         </form>
 
         <style>
-          @keyframes tt-fadeup { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
-          @keyframes tt-popin  { from { opacity:0; transform:scale(.5); } to { opacity:1; transform:scale(1); } }
-          @keyframes tt-check  { from { stroke-dashoffset:30; } to { stroke-dashoffset:0; } }
-          .tt-success-box { animation: tt-fadeup .45s cubic-bezier(.22,1,.36,1) both; }
-          .tt-success-box .tt-icon { animation: tt-popin .4s .1s cubic-bezier(.34,1.56,.64,1) both; }
-          .tt-success-box .tt-check { stroke-dasharray:30; stroke-dashoffset:30; animation: tt-check .4s .45s ease forwards; }
+          @keyframes tt-fadein  { from { opacity:0; transform:translateY(24px) scale(.97); } to { opacity:1; transform:translateY(0) scale(1); } }
+          @keyframes tt-popin   { 0% { opacity:0; transform:scale(0); } 60% { transform:scale(1.18); } 80% { transform:scale(.93); } 100% { opacity:1; transform:scale(1); } }
+          @keyframes tt-pulse   { 0%,100% { box-shadow:0 0 0 0 rgba(45,122,79,.45); } 60% { box-shadow:0 0 0 18px rgba(45,122,79,0); } }
+          @keyframes tt-check   { from { stroke-dashoffset:30; } to { stroke-dashoffset:0; } }
+          @keyframes tt-slideup { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+          .tt-success-box       { animation: tt-fadein .5s cubic-bezier(.22,1,.36,1) both; }
+          .tt-success-box .tt-icon {
+            animation: tt-popin .55s .05s cubic-bezier(.22,1,.36,1) both,
+                       tt-pulse .9s .6s ease-out 1;
+          }
+          .tt-success-box .tt-check { stroke-dasharray:30; stroke-dashoffset:30; animation: tt-check .45s .5s cubic-bezier(.4,0,.2,1) forwards; }
+          .tt-success-box .tt-title { animation: tt-slideup .4s .45s cubic-bezier(.22,1,.36,1) both; opacity:0; }
+          .tt-success-box .tt-body  { animation: tt-slideup .4s .6s cubic-bezier(.22,1,.36,1) both; opacity:0; }
         </style>
         <div id="bej-success" style="display:none; text-align:center; padding:3rem 1.5rem;">
           <div class="tt-success-box">
-            <div class="tt-icon" style="width:64px;height:64px;border-radius:50%;background:var(--clr-accent,#2d7a4f);display:inline-flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline class="tt-check" points="20 6 9 17 4 12"/></svg>
+            <div class="tt-icon" style="width:72px;height:72px;border-radius:50%;background:var(--clr-accent,#2d7a4f);display:inline-flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline class="tt-check" points="20 6 9 17 4 12"/></svg>
             </div>
-            <h3 style="font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem;">Köszönjük bejelentését!</h3>
-            <p style="color:#4a5568;line-height:1.7;">Bejelentését megkaptuk és hamarosan feldolgozzuk.</p>
+            <h3 class="tt-title" style="font-family:'Poppins',sans-serif;font-size:1.625rem;font-weight:700;margin-bottom:.6rem;">Köszönjük bejelentését!</h3>
+            <p class="tt-body" style="color:#4a5568;line-height:1.75;max-width:380px;margin:0 auto;">Bejelentését megkaptuk és hamarosan feldolgozzuk.</p>
           </div>
         </div>
 
