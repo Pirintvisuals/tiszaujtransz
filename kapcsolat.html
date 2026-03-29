@@ -595,44 +595,72 @@
         </form>
 
         <style>
-          @keyframes tt-fadein  { from { opacity:0; transform:translateY(24px) scale(.97); } to { opacity:1; transform:translateY(0) scale(1); } }
-          @keyframes tt-popin   { 0% { opacity:0; transform:scale(0); } 60% { transform:scale(1.18); } 80% { transform:scale(.93); } 100% { opacity:1; transform:scale(1); } }
-          @keyframes tt-pulse   { 0%,100% { box-shadow:0 0 0 0 rgba(45,122,79,.45); } 60% { box-shadow:0 0 0 18px rgba(45,122,79,0); } }
-          @keyframes tt-check   { from { stroke-dashoffset:30; } to { stroke-dashoffset:0; } }
-          @keyframes tt-slideup { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
-          .tt-success-box       { animation: tt-fadein .5s cubic-bezier(.22,1,.36,1) both; }
-          .tt-success-box .tt-icon {
-            animation: tt-popin .55s .05s cubic-bezier(.22,1,.36,1) both,
-                       tt-pulse .9s .6s ease-out 1;
+          #contact-form { transition: opacity .35s ease, transform .35s ease; }
+          #contact-form.tt-sending { opacity:.5; pointer-events:none; transform:scale(.99); }
+
+          @keyframes tt-popin   { 0%{opacity:0;transform:scale(0)} 65%{transform:scale(1.15)} 82%{transform:scale(.95)} 100%{opacity:1;transform:scale(1)} }
+          @keyframes tt-pulse   { 0%,100%{box-shadow:0 0 0 0 rgba(45,122,79,.5)} 65%{box-shadow:0 0 0 22px rgba(45,122,79,0)} }
+          @keyframes tt-check   { from{stroke-dashoffset:30} to{stroke-dashoffset:0} }
+          @keyframes tt-dropin  { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+          @keyframes tt-fadeup  { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+          #contact-success {
+            display: none;
+            text-align: center;
+            padding: 3.5rem 2rem;
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid rgba(45,122,79,.15);
+            box-shadow: 0 8px 32px rgba(0,0,0,.07);
           }
-          .tt-success-box .tt-check { stroke-dasharray:30; stroke-dashoffset:30; animation: tt-check .45s .5s cubic-bezier(.4,0,.2,1) forwards; }
-          .tt-success-box .tt-title { animation: tt-slideup .4s .45s cubic-bezier(.22,1,.36,1) both; opacity:0; }
-          .tt-success-box .tt-body  { animation: tt-slideup .4s .6s cubic-bezier(.22,1,.36,1) both; opacity:0; }
+          .tt-success-box { }
+          .tt-icon {
+            width:80px; height:80px; border-radius:50%;
+            background: var(--clr-accent,#2d7a4f);
+            display:inline-flex; align-items:center; justify-content:center;
+            margin-bottom:1.5rem;
+            animation: tt-popin .6s .05s cubic-bezier(.22,1,.36,1) both,
+                       tt-pulse 1s .65s ease-out 1;
+          }
+          .tt-check { stroke-dasharray:30; stroke-dashoffset:30; animation: tt-check .5s .55s cubic-bezier(.4,0,.2,1) forwards; }
+          .tt-title { font-family:'Poppins',sans-serif; font-size:1.75rem; font-weight:700; margin-bottom:.6rem;
+                      animation: tt-dropin .5s .3s cubic-bezier(.22,1,.36,1) both; opacity:0; }
+          .tt-body  { color:#4a5568; line-height:1.8; max-width:360px; margin:0 auto;
+                      animation: tt-fadeup .5s .5s cubic-bezier(.22,1,.36,1) both; opacity:0; }
         </style>
-        <div id="contact-success" style="display:none; text-align:center; padding:3rem 1.5rem;">
+        <div id="contact-success">
           <div class="tt-success-box">
-            <div class="tt-icon" style="width:72px;height:72px;border-radius:50%;background:var(--clr-accent,#2d7a4f);display:inline-flex;align-items:center;justify-content:center;margin-bottom:1.5rem;">
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline class="tt-check" points="20 6 9 17 4 12"/></svg>
+            <div class="tt-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline class="tt-check" points="20 6 9 17 4 12"/></svg>
             </div>
-            <h3 class="tt-title" style="font-family:'Poppins',sans-serif;font-size:1.625rem;font-weight:700;margin-bottom:.6rem;">Köszönjük üzenetét!</h3>
-            <p class="tt-body" style="color:#4a5568;line-height:1.75;max-width:380px;margin:0 auto;">Beküldött üzenetét megkaptuk. Munkatársunk hamarosan felveszi Önnel a kapcsolatot.</p>
+            <h3 class="tt-title">Köszönjük üzenetét!</h3>
+            <p class="tt-body">Beküldött üzenetét megkaptuk. Munkatársunk hamarosan felveszi Önnel a kapcsolatot.</p>
           </div>
         </div>
 
         <script>
           document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
+            var form = this;
             var btn = document.getElementById('contact-submit');
             btn.disabled = true;
             btn.textContent = 'Küldés...';
-            fetch(this.action, {
+            form.classList.add('tt-sending');
+            fetch(form.action, {
               method: 'POST',
-              body: new FormData(this),
+              body: new FormData(form),
               headers: { 'Accept': 'application/json' }
             }).then(function() {
-              document.getElementById('contact-form').style.display = 'none';
-              document.getElementById('contact-success').style.display = 'block';
+              var success = document.getElementById('contact-success');
+              form.style.transition = 'opacity .3s ease, max-height .5s ease';
+              form.style.opacity = '0';
+              setTimeout(function() {
+                form.style.display = 'none';
+                success.style.display = 'block';
+                success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }, 300);
             }).catch(function() {
+              form.classList.remove('tt-sending');
               btn.disabled = false;
               btn.textContent = 'Küldés';
             });
