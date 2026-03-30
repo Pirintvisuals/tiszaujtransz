@@ -1133,9 +1133,7 @@ img { max-width: 100%; height: auto; }
   margin-top: .75rem;
 }
 .footer__iso img {
-  height: 52px;
-  filter: brightness(0) invert(1);
-  opacity: .75;
+  height: 80px;
 }
 
 /* ── Sticky filter bar override (non-sticky) ───────────── */
