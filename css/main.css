@@ -1231,8 +1231,8 @@ img { max-width: 100%; height: auto; }
   .hero__actions { flex-direction: column; align-items: stretch; }
   .hero__actions .btn { text-align: center; justify-content: center; }
 
-  /* Széchenyi logo */
-  .hero__content a[href*="palyazat"] img { width: 160px !important; margin-top: 1rem; }
+  /* Széchenyi logo — hide on small phones to avoid overlapping hero title */
+  .hero > a[href*="palyazat"] { display: none !important; }
 
   /* Section titles */
   .section-title { font-size: clamp(1.4rem, 7vw, 2rem); }
