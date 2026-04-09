@@ -693,6 +693,8 @@ h1, h2, h3, h4, h5, h6 {
 .service-card__link svg { width: 15px; height: 15px; transition: transform var(--t-fast); }
 .service-card:hover .service-card__link { gap: .65rem; }
 .service-card:hover .service-card__link svg { transform: translateX(3px); }
+/* Make entire card tappable — stretched link covers the whole card */
+.service-card__link::after { content: ''; position: absolute; inset: 0; }
 
 
 /* ============================================================
