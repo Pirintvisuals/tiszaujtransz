@@ -1189,8 +1189,8 @@ img { max-width: 100%; height: auto; }
   .page-hero__sub       { font-size: .9rem !important; max-width: 100% !important; }
   .page-hero__breadcrumb { margin-top: 1.5rem !important; }
 
-  /* Hero Széchenyi logo */
-  .hero__content a[href*="palyazat"] img { width: 200px !important; }
+  /* Hero Széchenyi logo — hide when hero goes single-column to avoid overlap */
+  .hero > a[href*="palyazat"] { display: none !important; }
 
   /* About image height: less tall on tablet */
   .about__image-wrap img { height: 380px; }
@@ -1230,9 +1230,6 @@ img { max-width: 100%; height: auto; }
   .hero__subtitle { font-size: .9rem; }
   .hero__actions { flex-direction: column; align-items: stretch; }
   .hero__actions .btn { text-align: center; justify-content: center; }
-
-  /* Széchenyi logo — hide on small phones to avoid overlapping hero title */
-  .hero > a[href*="palyazat"] { display: none !important; }
 
   /* Section titles */
   .section-title { font-size: clamp(1.4rem, 7vw, 2rem); }

@@ -168,6 +168,32 @@
       font-style: italic;
     }
 
+    /* ── ISO section grid ── */
+    .iso-videos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .iso-videos-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 400px;
+      justify-self: end;
+    }
+    @media (max-width: 860px) {
+      .iso-videos-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .iso-videos-col  { max-width: 100%; justify-self: stretch; }
+    }
+
+    /* ── "25+ év" badge — smaller on mobile ── */
+    @media (max-width: 640px) {
+      .intro__image-badge { padding: .85rem 1.1rem; bottom: 1rem; left: 1rem; }
+      .intro__image-badge strong { font-size: 1.75rem; }
+      .intro__image-badge span   { font-size: .65rem; }
+    }
+
   </style>
 </head>
 <body>
@@ -457,7 +483,7 @@
   <div class="container">
 
     <!-- Top row: text left, videos right -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;">
+    <div class="iso-videos-grid">
 
       <!-- Left: text + ISO certs below -->
       <div class="reveal reveal--left">
@@ -482,7 +508,7 @@
       </div>
 
       <!-- Right: videos stacked -->
-      <div style="display:flex; flex-direction:column; gap:2rem; max-width:400px; justify-self:end;">
+      <div class="iso-videos-col">
         <div class="video-embed reveal">
           <iframe
             src="https://www.youtube.com/embed/grq5MqPFAww"
