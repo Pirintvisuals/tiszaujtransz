@@ -251,7 +251,6 @@ h1, h2, h3, h4, h5, h6 {
   transition: transform var(--t-base);
 }
 .nav__link:hover { color: #fff; }
-.nav__link:hover::after { transform: scaleX(1); }
 .nav--scrolled .nav__link        { color: var(--color-darker); }
 .nav--scrolled .nav__link:hover  { color: var(--color-primary); }
 .nav--scrolled .nav__link::after { background: var(--color-primary); }
