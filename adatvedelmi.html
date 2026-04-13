@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tiszaújváros Transz Kft. a sajtóban és médiában. Hírek, cikkek és közösségi megjelenések Kazincbarcika és Miskolc egyik vezető építőipari vállalatáról.">
-  <title>Média Megjelenés — Hírek a Sajtóban | Tiszaújváros Transz Kft.</title>
+  <meta name="description" content="Tiszaújváros Transz Kft. adatvédelmi tájékoztatója — személyes adatok kezelése, GDPR jogok, kapcsolatfelvételi adatok.">
+  <title>Adatvédelmi Tájékoztató | Tiszaújváros Transz Kft.</title>
   <link rel="icon" type="image/png" href="assets/images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,10 +13,9 @@
   <link rel="stylesheet" href="css/animations.css">
   <style>
 
-    /* ── Page Hero ── */
     .page-hero {
       position: relative;
-      min-height: 50vh;
+      min-height: 38vh;
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -24,15 +23,15 @@
     .page-hero__bg {
       position: absolute; inset: 0;
       background-image:
-        linear-gradient(to bottom, rgba(8,28,22,.88) 0%, rgba(8,28,22,.5) 55%, rgba(8,28,22,.82) 100%),
-        url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1600&q=80');
+        linear-gradient(to bottom, rgba(8,28,22,.92) 0%, rgba(8,28,22,.60) 55%, rgba(8,28,22,.88) 100%),
+        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=75');
       background-size: cover;
       background-position: center 40%;
     }
     .page-hero__inner {
       position: relative; z-index: 2;
       width: 100%;
-      padding: 10rem 0 5rem;
+      padding: 5rem 0 2.5rem;
     }
     .page-hero__eyebrow {
       display: inline-flex; align-items: center; gap: .65rem;
@@ -47,117 +46,106 @@
     }
     .page-hero__title {
       font-family: var(--font-heading);
-      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 800; color: #fff;
       line-height: 1.08; letter-spacing: -.025em;
-      max-width: 18ch; margin-bottom: 1.4rem;
+      max-width: 22ch; margin-bottom: 1.2rem;
       text-shadow: 0 2px 24px rgba(0,0,0,.3);
     }
     .page-hero__sub {
-      font-size: clamp(.95rem, 1.8vw, 1.125rem);
+      font-size: clamp(.9rem, 1.8vw, 1.05rem);
       color: rgba(255,255,255,.7); line-height: 1.75;
-      max-width: 48ch;
+      max-width: 52ch;
     }
     .page-hero__breadcrumb {
       display: flex; align-items: center; gap: .45rem;
-      font-size: .75rem; color: rgba(255,255,255,.45); margin-top: 3rem;
+      font-size: .75rem; color: rgba(255,255,255,.45); margin-top: 2rem;
     }
     .page-hero__breadcrumb a { color: rgba(255,255,255,.55); transition: color .2s; }
     .page-hero__breadcrumb a:hover { color: #fff; }
     .page-hero__breadcrumb svg { width: 10px; height: 10px; flex-shrink: 0; }
 
-    /* ── News grid ── */
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: clamp(1.25rem, 2.5vw, 2rem);
-      margin-top: 2.5rem;
+    /* ── Content ── */
+    .privacy-wrap {
+      max-width: 780px;
+      margin: 0 auto;
     }
-
-    .news-card {
-      background: #fff;
-      border: 1px solid rgba(0,0,0,.07);
-      border-radius: var(--radius-lg);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,.06);
-      transition: transform .25s cubic-bezier(.22,.61,.36,1), box-shadow .25s;
-    }
-    .news-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 28px rgba(0,0,0,.11);
-    }
-
-    .news-card__body {
-      padding: 1.75rem 2rem 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: .875rem;
-      flex: 1;
-    }
-
-    .news-card__meta {
-      display: flex;
-      align-items: center;
-      gap: .65rem;
-      flex-wrap: wrap;
-    }
-
-    .news-card__source {
-      display: inline-flex; align-items: center;
-      padding: .25rem .75rem;
-      font-family: var(--font-heading); font-size: .6875rem; font-weight: 700;
-      letter-spacing: .1em; text-transform: uppercase;
-      background: rgba(58,139,125,.1);
-      color: var(--color-primary);
-      border-radius: 2rem;
-    }
-
-    .news-card__date {
+    .privacy-updated {
       font-size: .8125rem;
-      color: rgba(76,76,76,.5);
+      color: var(--color-muted);
+      margin-bottom: 3rem;
       font-family: var(--font-heading);
+      letter-spacing: .06em;
     }
-
-    .news-card__title {
+    .privacy-section {
+      margin-bottom: 3rem;
+    }
+    .privacy-section h2 {
       font-family: var(--font-heading);
-      font-size: clamp(1.1rem, 2.2vw, 1.35rem);
-      font-weight: 700;
+      font-size: 1.125rem; font-weight: 700;
       color: var(--color-dark);
-      line-height: 1.3;
+      margin-bottom: 1rem;
+      padding-bottom: .625rem;
+      border-bottom: 2px solid var(--color-primary);
+      display: inline-block;
     }
-
-    .news-card__desc {
+    .privacy-section p {
       font-size: .9375rem;
       color: var(--color-body);
+      line-height: 1.8;
+      margin-bottom: .875rem;
+    }
+    .privacy-section ul {
+      padding-left: 1.25rem;
+      margin-bottom: .875rem;
+    }
+    .privacy-section ul li {
+      font-size: .9375rem;
+      color: var(--color-body);
+      line-height: 1.8;
+      margin-bottom: .25rem;
+    }
+    .privacy-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .875rem;
+      margin-bottom: 1rem;
+    }
+    .privacy-table th {
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: .75rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: .75rem 1rem;
+      text-align: left;
+    }
+    .privacy-table td {
+      padding: .75rem 1rem;
+      border-bottom: 1px solid rgba(0,0,0,.07);
+      color: var(--color-body);
+      line-height: 1.6;
+    }
+    .privacy-table tr:last-child td { border-bottom: none; }
+    .privacy-table tr:nth-child(even) td { background: rgba(0,0,0,.02); }
+    .privacy-highlight {
+      background: rgba(58,139,125,.07);
+      border-left: 3px solid var(--color-primary);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1rem;
+      font-size: .9rem;
+      color: var(--color-dark);
       line-height: 1.75;
-      flex: 1;
+    }
+
+    @media (max-width: 600px) {
+      .privacy-table { font-size: .8rem; }
+      .privacy-table th, .privacy-table td { padding: .6rem .75rem; }
     }
 
   </style>
-
-  <!-- SEO: Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:locale"      content="hu_HU">
-  <meta property="og:site_name"   content="Tiszaújváros Transz Kft.">
-  <meta property="og:url"         content="https://tiszaujvarostransz.hu/media-megjelenes.html">
-  <meta property="og:title"       content="Média Megjelenés | Tiszaújváros Transz Kft. a Sajtóban">
-  <meta property="og:description" content="Tiszaújváros Transz Kft. a sajtóban és médiában. Hírek, cikkek és közösségi megjelenések Kazincbarcika és Miskolc egyik vezető építőipari vállalatáról.">
-  <meta property="og:image"       content="https://tiszaujvarostransz.hu/assets/images/logo.png">
-  <!-- SEO: Canonical -->
-  <link rel="canonical" href="https://tiszaujvarostransz.hu/media-megjelenes.html">
-  <!-- SEO: Schema.org JSON-LD -->
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Média megjelenés — Tiszaújváros Transz Kft.",
-  "url": "https://tiszaujvarostransz.hu/media-megjelenes.html",
-  "description": "Tiszaújváros Transz Kft. megjelenései a sajtóban és médiában.",
-  "publisher": {"@type": "LocalBusiness", "@id": "https://tiszaujvarostransz.hu/#business"}
-}
-  </script>
+  <link rel="canonical" href="https://tiszaujvarostransz.hu/adatvedelmi.html">
 </head>
 <body>
 
@@ -180,7 +168,7 @@
       <ul role="list">
         <li class="nav__item"><a class="nav__link" href="index.html">Főoldal</a></li>
 
-        <li class="nav__item active" aria-haspopup="true">
+        <li class="nav__item" aria-haspopup="true">
           <a class="nav__link" href="rolunk.html">Rólunk
             <svg class="chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor"
                  stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -290,28 +278,23 @@
   <div class="container">
     <div class="page-hero__inner">
 
-      <p class="page-hero__eyebrow hero-anim-eyebrow">Sajtó és közösségi média</p>
+      <p class="page-hero__eyebrow">Jogi információk</p>
 
-      <h1 class="page-hero__title hero-anim-title" id="page-hero-title">
-        Média megjelenés
+      <h1 class="page-hero__title" id="page-hero-title">
+        Adatvédelmi Tájékoztató
       </h1>
 
-      <p class="page-hero__sub hero-anim-subtitle">
-        Rólunk szóló hírek a sajtóban és közösségi médiában
+      <p class="page-hero__sub">
+        Tájékoztatás személyes adatai kezeléséről a hatályos GDPR és magyar adatvédelmi jogszabályok alapján.
       </p>
 
-      <div class="page-hero__breadcrumb hero-anim-scroll">
+      <div class="page-hero__breadcrumb">
         <a href="index.html">Főoldal</a>
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"
              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polyline points="2 4 6 8 10 4" transform="rotate(-90 6 6)"/>
         </svg>
-        <a href="rolunk.html">Rólunk</a>
-        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"
-             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <polyline points="2 4 6 8 10 4" transform="rotate(-90 6 6)"/>
-        </svg>
-        <span>Média megjelenés</span>
+        <span>Adatvédelem</span>
       </div>
 
     </div>
@@ -320,48 +303,182 @@
 
 
 <!-- ============================================================
-     NEWS CARDS
+     CONTENT
      ============================================================ -->
-<section class="section" aria-labelledby="news-heading">
+<section class="section" aria-label="Adatvédelmi tájékoztató tartalma">
   <div class="container">
+    <div class="privacy-wrap">
 
-    <div class="reveal" style="margin-bottom:2rem;">
-      <span class="section-label">Sajtóvisszhang</span>
-      <span class="accent-line accent-line-anim"></span>
-      <h2 class="section-title" id="news-heading" style="margin-top:.75rem;">Hírek rólunk</h2>
-      <p class="section-desc">Követje nyomon legújabb megjelenéseinket a sajtóban és közösségi médiában.</p>
-    </div>
+      <p class="privacy-updated">Utolsó frissítés: 2025. március 7.</p>
 
-    <div class="news-grid stagger-children">
-
-      <!-- 1. Technológiai korszerűsítés -->
-      <article class="news-card reveal">
-        <div class="news-card__body">
-          <div class="news-card__meta">
-            <span class="news-card__source">Sümegi Szó – Facebook</span>
-            <time class="news-card__date" datetime="2024-11-08">2024. november 8.</time>
-          </div>
-          <h3 class="news-card__title">
-            Technológiai korszerűsítés — új munkagépeket vásárolt a Tiszaújváros Transz
-          </h3>
+      <!-- 1. Adatkezelő -->
+      <div class="privacy-section reveal">
+        <h2>1. Az adatkezelő</h2>
+        <p>A www.tiszaujvarostransz.hu weboldal (a továbbiakban: „Weboldal") üzemeltetője és az adatok kezelője:</p>
+        <div class="privacy-highlight">
+          <strong>Tiszaújváros Transz Építőipari és Szállítmányozó Kft.</strong><br>
+          Székhely: 3700 Kazincbarcika, 1711/10 hrsz.<br>
+          E-mail: <a href="mailto:info@tiszaujvarostransz.hu">info@tiszaujvarostransz.hu</a><br>
+          Telefon: <a href="tel:+36307510000">+36 30 751 0000</a>
         </div>
-      </article>
+      </div>
 
-      <!-- 2. Alapkőletétel Tapolcán -->
-      <article class="news-card reveal">
-        <div class="news-card__body">
-          <div class="news-card__meta">
-            <span class="news-card__source">Facebook</span>
-          </div>
-          <h3 class="news-card__title">
-            Ma Tapolcán megtörtént az alapkőletétel
-          </h3>
-          <p class="news-card__desc">
-            Ma Tapolcán megtörtént az alapkőletétel, ezzel megkezdődnek a kivitelezési munkálatok.
-            A tervek szerint tavasszal várható az étterem nyitása.
-          </p>
+      <!-- 2. A Weboldal célja -->
+      <div class="privacy-section reveal">
+        <h2>2. A Weboldal célja</h2>
+        <p>A Weboldal a Tiszaújváros Transz Kft. által nyújtott építőipari szolgáltatásokról — generálkivitelezés, magasépítés, út- és közműépítés, gépi földmunkavégzés, beton- és vasbetonszerkezetek — nyújt tájékoztatást, valamint kapcsolatfelvételi lehetőséget biztosít.</p>
+        <p>A Weboldal nem folytat online kereskedelmi tevékenységet és nem dolgoz fel pénzügyi adatokat.</p>
+      </div>
+
+      <!-- 3. Kezelt adatok -->
+      <div class="privacy-section reveal">
+        <h2>3. Kezelt személyes adatok</h2>
+        <p>A kapcsolatfelvételi űrlapon keresztül az alábbi adatok adhatók meg:</p>
+        <ul>
+          <li><strong>Teljes név</strong> (kötelező)</li>
+          <li><strong>E-mail cím</strong> (kötelező)</li>
+          <li><strong>Telefonszám</strong> (opcionális)</li>
+          <li><strong>Cégnév / Szervezet</strong> (opcionális)</li>
+          <li><strong>Megkeresés tárgya</strong> (kötelező — pl. generálkivitelezés, földmunka)</li>
+          <li><strong>Üzenet szövege</strong> (kötelező)</li>
+        </ul>
+        <p>Az adatokat kizárólag akkor kezeljük, ha Ön azokat önkéntesen megadja és az űrlapot elküldi.</p>
+      </div>
+
+      <!-- 4. Az adatkezelés célja és jogalapja -->
+      <div class="privacy-section reveal">
+        <h2>4. Az adatkezelés célja és jogalapja</h2>
+        <table class="privacy-table">
+          <thead>
+            <tr>
+              <th>Cél</th>
+              <th>Jogalap (GDPR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ajánlatkérések megválaszolása, árajánlat készítése</td>
+              <td>Szerződés teljesítése — 6. cikk (1) b)</td>
+            </tr>
+            <tr>
+              <td>Kapcsolattartás az érdeklődővel</td>
+              <td>Hozzájárulás — 6. cikk (1) a)</td>
+            </tr>
+            <tr>
+              <td>Jogos üzleti érdek védelme</td>
+              <td>Jogos érdek — 6. cikk (1) f)</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Hozzájárulását bármikor visszavonhatja az <a href="mailto:info@tiszaujvarostransz.hu">info@tiszaujvarostransz.hu</a> e-mail címen. A visszavonás nem érinti a visszavonás előtti adatkezelés jogszerűségét.</p>
+      </div>
+
+      <!-- 5. Adattovábbítás -->
+      <div class="privacy-section reveal">
+        <h2>5. Adattovábbítás és harmadik felek</h2>
+        <p>Az adatok az alábbi technikai szolgáltatók számára kerülhetnek továbbításra:</p>
+        <table class="privacy-table">
+          <thead>
+            <tr>
+              <th>Szolgáltató</th>
+              <th>Cél</th>
+              <th>Adatkezelés helye</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>tarhely.eu Kft.</td>
+              <td>Weboldal hosting</td>
+              <td>Magyarország (EU)</td>
+            </tr>
+            <tr>
+              <td>FormSubmit.co</td>
+              <td>Kapcsolatfelvételi űrlap továbbítása</td>
+              <td>USA (adatfeldolgozói szerződés alapján)</td>
+            </tr>
+            <tr>
+              <td>Google LLC</td>
+              <td>Google Fonts betűtípusok, Google Maps térkép</td>
+              <td>USA / EU (Google Data Privacy Framework)</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Az adatokat nem adjuk el, és nem adjuk át harmadik félnek marketing célokra. Adattovábbítás kizárólag jogszabályi kötelezettség esetén lehetséges.</p>
+      </div>
+
+      <!-- 6. Adattárolás -->
+      <div class="privacy-section reveal">
+        <h2>6. Adattárolás és megőrzési idő</h2>
+        <p>Az űrlapon keresztül beérkező adatok e-mailben kerülnek kézbesítésre az adatkezelő részére, és kizárólag az ajánlatkészítéshez, illetve az ügyféllel való kommunikációhoz szükséges ideig kerülnek megőrzésre.</p>
+        <p>Az adatokat töröljük, ha az üzleti kapcsolat lezárult és a megőrzésre nincs tovább szükség, vagy ha Ön törlést kér.</p>
+      </div>
+
+      <!-- 7. Sütik -->
+      <div class="privacy-section reveal">
+        <h2>7. Sütik (cookie-k)</h2>
+        <p>A Weboldal kizárólag a működéshez szükséges, munkamenet-kezelő sütiket alkalmaz. Harmadik féltől származó nyomkövető vagy marketing sütiket nem használunk, és látogatói analitikát (pl. Google Analytics) nem alkalmazunk.</p>
+        <p>A böngésző beállításaiban a sütik bármikor letilthatók, ez azonban a Weboldal egyes funkcióit korlátozhatja.</p>
+      </div>
+
+      <!-- 8. Biztonság -->
+      <div class="privacy-section reveal">
+        <h2>8. Adatbiztonság</h2>
+        <p>Az adatok védelme érdekében az alábbi intézkedések vannak érvényben:</p>
+        <ul>
+          <li>HTTPS titkosított kapcsolat a Weboldalon</li>
+          <li>Biztonságos e-mail kézbesítés (FormSubmit.co szolgáltatáson keresztül)</li>
+          <li>Hozzáférés-korlátozott tárhelyszolgáltatás (tarhely.eu)</li>
+        </ul>
+        <p>Megjegyezzük, hogy az internetes adatátvitel semmilyen módja sem garantáltan teljesen biztonságos. A Weboldal használata saját felelősségre történik.</p>
+      </div>
+
+      <!-- 9. Az Ön jogai -->
+      <div class="privacy-section reveal">
+        <h2>9. Az Ön jogai (GDPR)</h2>
+        <p>Az EU és Magyarország területén tartózkodó felhasználók az alábbi jogokkal rendelkeznek személyes adataik kezelésével kapcsolatban:</p>
+        <ul>
+          <li><strong>Hozzáférési jog</strong> — Tájékoztatást kérhet a kezelt adatairól</li>
+          <li><strong>Helyesbítési jog</strong> — Kérheti pontatlan adatai javítását</li>
+          <li><strong>Törlési jog</strong> — Kérheti adatai törlését („elfeledtetéshez való jog")</li>
+          <li><strong>Korlátozáshoz való jog</strong> — Kérheti az adatkezelés korlátozását</li>
+          <li><strong>Tiltakozási jog</strong> — Tiltakozhat adatai kezelése ellen</li>
+          <li><strong>Adathordozhatósághoz való jog</strong> — Kérheti adatai géppel olvasható másolatát</li>
+          <li><strong>Hozzájárulás visszavonásának joga</strong> — Bármikor visszavonhatja hozzájárulását</li>
+        </ul>
+        <p>Kérelmét ésszerű határidőn belül, legkésőbb <strong>30 napon belül</strong> kezeljük.</p>
+        <p>Jogai gyakorlásához forduljon hozzánk: <a href="mailto:info@tiszaujvarostransz.hu">info@tiszaujvarostransz.hu</a></p>
+        <p>Panasz esetén fordulhat a felügyeleti hatósághoz:</p>
+        <div class="privacy-highlight">
+          <strong>Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)</strong><br>
+          Cím: 1055 Budapest, Falk Miksa utca 9–11.<br>
+          Honlap: <a href="https://naih.hu" target="_blank" rel="noopener">naih.hu</a><br>
+          E-mail: <a href="mailto:ugyfelszolgalat@naih.hu">ugyfelszolgalat@naih.hu</a>
         </div>
-      </article>
+      </div>
+
+      <!-- 10. Szellemi tulajdon -->
+      <div class="privacy-section reveal">
+        <h2>10. Szellemi tulajdon</h2>
+        <p>A Weboldalon megjelenő valamennyi tartalom — szövegek, képek, logók, grafikai elemek, elrendezés — a Tiszaújváros Transz Kft. tulajdonát képezi vagy felhasználási engedéllyel rendelkezik. A tartalmak engedély nélküli másolása, terjesztése vagy kereskedelmi célú felhasználása jogszabályba ütközhet.</p>
+      </div>
+
+      <!-- 11. Módosítás -->
+      <div class="privacy-section reveal">
+        <h2>11. A tájékoztató módosítása</h2>
+        <p>A jelen Adatvédelmi Tájékoztató előzetes értesítés nélkül módosítható. A hatályos verzió mindig ezen az oldalon érhető el, frissített „Utolsó frissítés" dátummal. A Weboldal további használata a módosítások elfogadását jelenti.</p>
+      </div>
+
+      <!-- 12. Kapcsolat -->
+      <div class="privacy-section reveal">
+        <h2>12. Kapcsolat</h2>
+        <p>Adatvédelmi kérdéseivel forduljon hozzánk bizalommal:</p>
+        <div class="privacy-highlight">
+          <strong>Tiszaújváros Transz Kft.</strong><br>
+          E-mail: <a href="mailto:info@tiszaujvarostransz.hu">info@tiszaujvarostransz.hu</a><br>
+          Telefon: <a href="tel:+36307510000">+36 30 751 0000</a><br>
+          Cím: 3700 Kazincbarcika, 1711/10 hrsz.
+        </div>
+      </div>
 
     </div>
   </div>
@@ -420,7 +537,7 @@
             <span><a href="mailto:info@tiszaujvarostransz.hu">info@tiszaujvarostransz.hu</a></span>
           </div>
         </address>
-      
+
         <div style="margin-top:1.5rem; display:flex; gap:.875rem; flex-wrap:wrap; align-items:center;">
           <img src="cert-mark-en-iso9001.png" alt="ISO 9001 tanúsítvány" loading="lazy" style="height:52px; width:auto; background:#fff; border-radius:6px; padding:4px; display:block;">
           <img src="cert-mark-en-iso14001.png" alt="ISO 14001 tanúsítvány" loading="lazy" style="height:52px; width:auto; background:#fff; border-radius:6px; padding:4px; display:block;">
