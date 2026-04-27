@@ -1010,15 +1010,15 @@
 <!-- ============================================================
      GOOGLE MAPS
      ============================================================ -->
-<section class="section" aria-label="Térképek">
+<section class="section" aria-label="Térképek" style="padding-top:3rem;">
   <div class="container">
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
 
-      <div class="map-wrap reveal">
-        <p style="font-family:var(--font-heading); font-size:.75rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--color-dark); margin-bottom:.75rem;">Telephely — 3700 Kazincbarcika, Csók István utca 46.</p>
+      <div class="reveal">
+        <p style="font-family:var(--font-heading); font-size:.8rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--color-dark); margin-bottom:.875rem; opacity:.7;">Telephely — 3700 Kazincbarcika, Csók István utca 46.</p>
         <iframe
           src="https://www.google.com/maps?q=3700+Kazincbarcika,+Csók+István+utca+46&output=embed"
-          width="100%" height="340" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy"
+          width="100%" height="340" style="border:0; border-radius:8px; display:block;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade" title="Telephely — Kazincbarcika">
         </iframe>
         <p style="font-size:.8rem; color:#888; margin-top:.5rem;">
@@ -1028,11 +1028,11 @@
         </p>
       </div>
 
-      <div class="map-wrap reveal">
-        <p style="font-family:var(--font-heading); font-size:.75rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--color-dark); margin-bottom:.75rem;">Iroda — 3527 Miskolc, József Attila út 57. 1. emelet</p>
+      <div class="reveal">
+        <p style="font-family:var(--font-heading); font-size:.8rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--color-dark); margin-bottom:.875rem; opacity:.7;">Iroda — 3527 Miskolc, József Attila út 57. 1. emelet</p>
         <iframe
           src="https://www.google.com/maps?q=3527+Miskolc,+József+Attila+út+57&output=embed"
-          width="100%" height="340" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy"
+          width="100%" height="340" style="border:0; border-radius:8px; display:block;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade" title="Iroda — Miskolc">
         </iframe>
         <p style="font-size:.8rem; color:#888; margin-top:.5rem;">
@@ -1046,7 +1046,6 @@
 
     <style>
       @media (max-width: 700px) {
-        .map-wrap { grid-column: 1 / -1; }
         section[aria-label="Térképek"] .container > div { grid-template-columns: 1fr; }
       }
     </style>
